@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <meta name="viewport" content="width=device-width, user-scalable=no">
+        <title>Calculadora de PCI</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body>
+
+
+        <div class="container-fluid" style="padding: 30px; background-color: rgba(222, 222, 222, 0,05)"  >
+ 
+            <div class="col-12" style="padding-bottom: 10px">
+                <h4 align="center" style="background-color: green; padding: 5px; color: white">COMPARAÇÃO CUSTO DE PCI</h4>
+            </div>
+
+            <div class="row">
+
+                <div class="col-sm-3" style="padding-left: 50px">
+            
+                    <div class="row">                        
+                        <lable>Primeiro Insumo</lable>
+                            <select id="fuel1" class="form-control">
+
+                                <option value="6300">APARAS VINILO</option>
+
+                                <option value="3200">BAGAÇO DE CANA (20% ÁGUA)</option>
+                                <option value="1800">BAGAÇO DE CANA (50% ÁGUA)</option>
+                                <option value="3700">BAMBÚ (10% ÁGUA)</option>
+                                <option value="1570">BORRA DE CAFÉ</option>
+
+                                <option value="7000">CARVÃO DE BABAÚ</option>
+                                <option value="6200">CARVÃO MINERAL - CAMBUI/PR</option>
+                                <option value="3100">CARVÃO MINERAL - CHARQUEADAS/RS</option>
+                                <option value="4200">CARVÃO MINERAL - MINA DO LEÃO/RS</option>
+                                <option value="4500">CARVÃO MINERAL - TUBARÃO/SC</option>
+                                <option value="7500">CARVÃO VEGETAL</option>
+                                <option value="2200">CASCA DE ÁRVORE</option>
+                                <option value="3000">CASCA DE ALGODÃO</option>
+                                <option value="4800">CASCA DE AMÊNDOA DENDÊ</option>
+                                <option value="3300">CASCA DE ARROZ (20% ÁGUA)</option>
+                                <option value="4000">CASCA DE BABAÇÚ</option>
+                                <option value="3900">CASCA DE CACAU (8% ÁGUA)</option>
+                                <option value="3800">CASCA DE CAFÉ</option>
+                                <option value="4700">CASCA DE CAJU</option>
+                                <option value="4000">CASCA DE CÔCO</option>
+                                <option value="3750">CASCA DE EUCALIPTO</option>
+                                <option value="800">CASCA DE TANINO ÚMIDO (68% ÁGUA)</option>
+                                <option value="3300">CASCA DE SOJA</option>
+
+                                <option value="9800">OLEO COMBUSTIVEL 1A</option>
+                                <option value="9800">OLEO COMBUSTIVEL 1B</option>
+                                <option value="9000">OLEO COMBUSTIVEL 2A</option>
+                                <option value="9000">OLEO COMBUSTIVEL 2B</option>
+                                <option value="3000">OLEO COMBUSTIVEL 3A</option>
+                                <option value="9000">OLEO COMBUSTIVEL 3B</option>
+
+                                
+                            </select>                        
+                    </div>
+
+                    <br/>
+
+                    <div class="row">                        
+                        <lable>Preço por KG</lable>
+                        <input id="price1" type="number" value="" class="form-control" placeholder="Informe o preço"/>                        
+                    </div>
+
+                    <br/>
+                                
+                    <div class="row">
+                        <table cellpadding="10">
+                            <tr><td colspan="2"><lable>Valor calorífico</lable></td></tr>                  
+                            <tr><td><h3><span class="badge badge-secondary" id="pci1"/>...</h3></td></tr>
+                            
+                        </table>                        
+                    </div>
+
+                    <br/>
+
+                    <div class="row">
+                        <table cellpadding="10">                       
+                            <tr><td colspan="2"><lable>Preço Unid PCI</lable></td></tr>
+                            <tr><td><h3><span class="badge badge-secondary" id="vrpci1"/>...</h3></td></tr>
+                        </table>                        
+                    </div>
+
+                    <div class="row">            
+                        <table cellpadding="10">
+                            <tr ><td colspan="2"><h3>Melhor opção</h3></td></tr>
+                            <tr><td><h3><span class="badge badge-primary" id="melhoropcao"/>...</h3></h1></td></tr>
+                        </table>                   
+                    </div>
+
+                    <div class="row">            
+                        <table cellpadding="10">
+                            <tr><td><h3>Economia</h3></td></tr>
+                            <tr><td><h3><span class="badge badge-primary" id="percentual"/>...</h3></h1></td></tr>
+                            
+                        </table>
+                    </div>
+                    <br/>
+
+                </div> <!-- fim div com classe col-sm-2 -->
+
+                <!--<div class="col-sm-1" ></div>-->
+
+                <div class="col-sm-3" style="padding-left: 50px">
+            
+                    <div class="row">                        
+                        <lable>Segundo Insumo</lable>
+                            <select id="fuel2" class="form-control">
+                                
+                                <option value="6300">APARAS VINILO</option>
+
+                                <option value="3200">BAGAÇO DE CANA (20% ÁGUA)</option>
+                                <option value="1800">BAGAÇO DE CANA (50% ÁGUA)</option>
+                                <option value="3700">BAMBÚ (10% ÁGUA)</option>
+                                <option value="1570">BORRA DE CAFÉ</option>
+
+                                <option value="7000">CARVÃO DE BABAÚ</option>
+                                <option value="6200">CARVÃO MINERAL - CAMBUI/PR</option>
+                                <option value="3100">CARVÃO MINERAL - CHARQUEADAS/RS</option>
+                                <option value="4200">CARVÃO MINERAL - MINA DO LEÃO/RS</option>
+                                <option value="4500">CARVÃO MINERAL - TUBARÃO/SC</option>
+                                <option value="7500">CARVÃO VEGETAL</option>
+                                <option value="2200">CASCA DE ÁRVORE</option>
+                                <option value="3000">CASCA DE ALGODÃO</option>
+                                <option value="4800">CASCA DE AMÊNDOA DENDÊ</option>
+                                <option value="3300">CASCA DE ARROZ (20% ÁGUA)</option>
+                                <option value="4000">CASCA DE BABAÇÚ</option>
+                                <option value="3900">CASCA DE CACAU (8% ÁGUA)</option>
+                                <option value="3800">CASCA DE CAFÉ</option>
+                                <option value="4700">CASCA DE CAJU</option>
+                                <option value="4000">CASCA DE CÔCO</option>
+                                <option value="3750">CASCA DE EUCALIPTO</option>
+                                <option value="800">CASCA DE TANINO ÚMIDO (68% ÁGUA)</option>
+                                <option value="3300">CASCA DE SOJA</option>
+
+                                <option value="9800">OLEO COMBUSTIVEL 1A</option>
+                                <option value="9800">OLEO COMBUSTIVEL 1B</option>
+                                <option value="9000">OLEO COMBUSTIVEL 2A</option>
+                                <option value="9000">OLEO COMBUSTIVEL 2B</option>
+                                <option value="3000">OLEO COMBUSTIVEL 3A</option>
+                                <option value="9000">OLEO COMBUSTIVEL 3B</option>
+
+                            </select>                        
+                    </div>
+
+                    <br/>
+
+                    <div class="row">                        
+                        <lable>Preço por KG</lable>
+                        <input id="price2" type="number" value="" class="form-control" placeholder="Informe o preço"/>                        
+                    </div>
+
+                    <br/>
+                                
+                    <div class="row">
+                        <table cellpadding="10">
+                            <tr><td colspan="2"><lable>Valor calorífico</lable></td></tr>                  
+                            <tr><td><h3><span class="badge badge-secondary" id="pci2"/>...</h3></td></tr>
+                            
+                        </table>                        
+                    </div>
+    
+                    <br/>
+
+                    <div class="row">
+                        <table cellpadding="10">                       
+                            <tr><td colspan="2"><lable>Preço Unid PCI</lable></td></tr>
+                            <tr><td><h3><span class="badge badge-secondary" id="vrpci2"/>...</h3></td></tr>
+                        </table>                        
+                    </div>
+
+                </br>
+
+                    <div class="row">
+                        <table cellpadding="10">                       
+                            <tr><td><a href="http://www.teccalor.com.br/PDF/TabelaPoderCalorifico.pdf" target="_blank"><span class="badge badge-danger">TabelaPoderCalorífico.pdf</span></a></td></tr>
+                        </table>                        
+                    </div>
+                    
+                    <br/>
+    
+                </div> <!-- fim div com classe sm-2 -->
+
+                
+                <div class="col-sm-6" style="padding-left: 50px">
+                    <div class="row" style="padding-bottom: 30px"> 
+                        <canvas class="bar-chart" width= "3000" height="1000"></canvas>
+                    </div>
+                    <div class="row"> 
+                        <canvas class="doughnut-chart" ></canvas>
+                    </div>  
+                </div>
+
+
+            </div> <!-- fim div com classe row-->
+
+
+        </div> <!-- fim div com classe container-->
+
+                
+
+
+
+
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js" integrity="sha256-qSIshlknROr4J8GMHRlW3fGKrPki733tLq+qeMCR05Q=" crossorigin="anonymous"></script>
+
+        <script>
+            
+            $("#fuel1").change(function(){
+                calc1();
+
+            });
+
+            $("#price1").change(function(){
+                calc1();
+
+            });
+
+            $("#fuel2").change(function(){
+                calc2();
+
+            });
+
+            $("#price2").change(function(){
+                calc2();
+
+            });
+
+            function calc1(){
+                
+                var fuel1 = $("#fuel1").val();
+                var price1 = $("#price1").val();
+
+                var vrPci1 = price1 / fuel1;
+
+                $("#pci1").html(fuel1 + " Kcal/Kg");
+                $("#vrpci1").html("R$ " + vrPci1.toFixed(5));
+
+                calcPercentual();
+                refreshGraph();
+            }
+
+
+            function calc2(){
+                
+                var fuel2 = $("#fuel2").val();
+                var price2 = $("#price2").val();
+
+                var vrPci2 = price2 / fuel2;
+
+                $("#pci2").html(fuel2 + " Kcal/kg");
+                $("#vrpci2").html("R$ " + vrPci2.toFixed(5));
+
+                calcPercentual();
+                refreshGraph();
+            }
+
+            function calcPercentual(){
+                
+                var insumo2 = $("#fuel2 :selected").text()
+                var fuel2 = $("#fuel2").val();
+                var price2 = $("#price2").val();
+                var vrPci2 = price2 / fuel2;
+
+                var insumo1 = $("#fuel1 :selected").text()
+                var fuel1 = $("#fuel1").val();
+                var price1 = $("#price1").val();
+                var vrPci1 = price1 / fuel1;
+
+                // Calcula o percentual entre o menor e o maior custo por PCI
+                if(vrPci1 < vrPci2)
+                    percentual = (((vrPci1 / vrPci2) - 1) * 100) * -1;
+                else if (vrPci1 > vrPci2)
+                    percentual = (((vrPci2 / vrPci1) - 1) * 100) * -1;
+                else
+                    percentual = 0;
+
+                $("#percentual").html(percentual.toFixed(0) + "% mais barato" );
+
+
+                // Verifica qual melhor opção entre os insumos
+                if(vrPci1 < vrPci2)
+                    $("#melhoropcao").html(insumo1);
+                else if (vrPci1 > vrPci2)
+                    $("#melhoropcao").html(insumo2);
+                else 
+                    $("#melhoropcao").html("...");
+
+            }
+
+        var ctx = document.getElementsByClassName("bar-chart");
+        var ctx1 = document.getElementsByClassName("doughnut-chart");
+
+        // Type, Data e Options
+        
+        function refreshGraph(){
+            var insumo2 = $("#fuel2 :selected").text()
+            var fuel2 = $("#fuel2").val();
+            var price2 = $("#price2").val();
+            var vrPci2 = price2 / fuel2;
+
+            var insumo1 = $("#fuel1 :selected").text()
+            var fuel1 = $("#fuel1").val();
+            var price1 = $("#price1").val();
+            var vrPci1 = price1 / fuel1;
+
+            var chartGraphBar = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: [insumo1, insumo2],
+                    datasets: [{
+                        data: [vrPci1, vrPci2],
+                        borderWidth: 2,
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(75, 192, 192, 1)',
+                        ],
+                            
+                        backgroundColor: [                                
+                            'rgba(255, 99, 132, 0.8)',                             
+                            'rgba(75, 192, 192, 0.8)',
+                        ],
+                    }],
+
+                },
+                options: {
+                    title: {
+                        display: true,
+                        fontSize: 16,
+                        text: "Comparação entre custos por PCI"
+                    },
+                    legend: {
+                        display: false,
+                    },
+                    scales: {
+                        xAxes: [{
+                        stacked: true
+                    }]}
+                },
+
+            });
+
+            var chatGraphDoughnut = new Chart(ctx1, {
+                type: 'doughnut',
+                data: {
+                    labels: [insumo1, insumo2],
+                    datasets: [{
+                        labels: "",
+                        data: [fuel1, fuel2],
+                        borderWidth: 2,
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(75, 192, 192, 1)',
+                        ],
+                            
+                        backgroundColor: [                                
+                            'rgba(255, 99, 132, 0.8)',                             
+                            'rgba(75, 192, 192, 0.8)',
+                        ],
+                    }],
+
+                },
+                options: {
+                    title: {
+                        display: true,
+                        fontSize: 16,
+                        text: "Comparação Poder Calorífico"
+                    },
+                    legend: {
+                        display: true,
+                        position: 'bottom',
+                        fullWidth: true,
+                        
+                    }
+                }
+
+            });
+        }
+        </script>
+
+    </body>
+</html>
