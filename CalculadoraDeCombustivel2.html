@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <meta name="viewport" content="width=device-width, user-scalable=no">
+        <title>Calculadora de PCI</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body>
+        <!---------------------  INICIO CONTAINER     ------------------------>
+        <div class="container-fluid" style="padding-left: 50px; padding-right: 50px; padding-top: 30px; background-color: rgba(0, 0, 0, 0.952);">
+        <!---------------------    1ª LINHA   ------------------------>
+            <div class="row">
+
+                <div class="col-12" style="border-radius: 10px; background-color: green">
+                    <h4 align="center" style="padding: 5px; color:white">COMPARAÇÃO CUSTO DE PODER CALORÍFICO</h4> 
+                </div>
+
+            </div>
+
+            </br>
+
+            <div class="row">
+
+                <div class="col-sm-3" style="background-color:  rgb(255, 255, 255); border-radius: 10px; margin: 5px; margin-left: 30px">
+                    <div class="row" style="margin: 20px">
+                        
+                        <h5>COMBUSTÍVEIS USIBRAS</h5>
+
+                    </div>
+
+                    <div class="row" style="margin: 20px">
+                        
+                        <select id="combUsibras" class="form-control">
+                            <option value="1" selected disabled hidden>Escolha uma opção</option>
+                            <option value="4700">PELLET USIBRAS</option>
+                            <option value="4900">LCC USIBRAS</option>
+                            <option value="4700">CASCA CAJU USIBRAS</option>
+                        </select>
+
+                    </div>
+
+                        
+                    <div class="row" style="margin: 20px">
+                        <h5>PREÇO POR KG</h5>
+                    </div>
+
+                    <div class="row" style="margin: 20px">
+                        <input id="precoUsibras" type="number" value="" class="form-control" placeholder="Informe o preço"/>
+                    </div>
+
+                    <div class="row" style="margin: 20px">
+                        <h5>PODER CALORÍFICO</h5>
+                    </div>
+
+                    <div class="row" style="margin: 20px">
+                        <h3><span id="pciUsibras" class="badge badge-secondary"/>...</h3>
+                    </div>
+
+                    <div class="row" style="margin: 20px">
+                        <h5>PREÇO UNITÁRIO</h5>
+                    </div>
+
+                    <div class="row" style="margin: 20px">
+                        <h3><span id="precoUnitUsibras" class="badge badge-secondary"/>...</h3>
+                    </div>
+
+                </div>
+
+                
+                <div class="col-sm-3" style="background-color: rgb(255, 255, 255); border-radius: 10px; margin: 5px; margin-left: 30px">
+                    <div class="row" style="margin: 20px">
+                        
+                        <h5>OUTROS COMBUSTÍVEIS</h5>
+
+                    </div>
+
+                    <div class="row" style="margin: 20px">
+                        
+                        <select id="combOutros" class="form-control">
+                            <option value="1" selected disabled hidden>Escolha uma opção</option>
+                            <option value="6300">APARAS VINILO</option>
+
+                            <option value="3200">BAGAÇO DE CANA (20% ÁGUA)</option>
+                            <option value="1800">BAGAÇO DE CANA (50% ÁGUA)</option>
+                            <option value="3700">BAMBÚ (10% ÁGUA)</option>
+                            <option value="1570">BORRA DE CAFÉ</option>
+
+                            <option value="7000">CARVÃO DE BABAÚ</option>
+                            <option value="6200">CARVÃO MINERAL - CAMBUI/PR</option>
+                            <option value="3100">CARVÃO MINERAL - CHARQUEADAS/RS</option>
+                            <option value="4200">CARVÃO MINERAL - MINA DO LEÃO/RS</option>
+                            <option value="4500">CARVÃO MINERAL - TUBARÃO/SC</option>
+                            <option value="7500">CARVÃO VEGETAL</option>
+                            <option value="2200">CASCA DE ÁRVORE</option>
+                            <option value="3000">CASCA DE ALGODÃO</option>
+                            <option value="4800">CASCA DE AMÊNDOA DENDÊ</option>
+                            <option value="3300">CASCA DE ARROZ (20% ÁGUA)</option>
+                            <option value="4000">CASCA DE BABAÇÚ</option>
+                            <option value="3900">CASCA DE CACAU (8% ÁGUA)</option>
+                            <option value="3800">CASCA DE CAFÉ</option>
+                            <option value="4000">CASCA DE CÔCO</option>
+                            <option value="3750">CASCA DE EUCALIPTO</option>
+                            <option value="800">CASCA DE TANINO ÚMIDO (68% ÁGUA)</option>
+                            <option value="3300">CASCA DE SOJA</option>
+
+                            <option value="9800">OLEO COMBUSTIVEL 1A</option>
+                            <option value="9800">OLEO COMBUSTIVEL 1B</option>
+                            <option value="9000">OLEO COMBUSTIVEL 2A</option>
+                            <option value="9000">OLEO COMBUSTIVEL 2B</option>
+                            <option value="3000">OLEO COMBUSTIVEL 3A</option>
+                            <option value="9000">OLEO COMBUSTIVEL 3B</option>
+
+                        </select>
+
+                    </div>
+                        
+                    <div class="row" style="margin: 20px">
+                        <h5>PREÇO POR KG</h5>
+                    </div>
+
+                    <div class="row" style="margin: 20px">
+                        <input id="precoOutros" type="number" value="" class="form-control" placeholder="Informe o preço"/>
+                    </div>
+
+                    <div class="row" style="margin: 20px">
+                        <h5>PODER CALORÍFICO</h5>
+                    </div>
+
+                    <div class="row" style="margin: 20px">
+                        <h3><span id="pciOutros" class="badge badge-secondary"/>...</h3>
+                    </div>
+
+                    <div class="row" style="margin: 20px">
+                        <h5>PREÇO UNITÁRIO</h5>
+                    </div>
+
+                    <div class="row" style="margin: 20px">
+                        <h3><span id="precoUnitOutros" class="badge badge-secondary"/>...</h3>
+                    </div>
+
+                </div>
+                
+                <div class="col-sm-5" style="background-color: rgb(255, 255, 400); border-radius: 10px; margin: 5px; margin-left: 30px">
+                    <div class="row">
+                        <div class="col-sm-6">
+
+                            <div class="row" style="margin: 20px">
+                    
+                                <h5>OPÇÃO MAIS ECONÔMICA</h5>
+            
+                            </div>
+
+                            <div class="row" style="margin: 20px">
+                        
+                                <h3><span id="melhorOpcao" class="badge badge-success"/>...</h3>
+                                        
+                            </div>
+                        
+                        </div>
+
+                        <div class="col-sm-6">
+
+                            <div class="row" style="margin: 20px">
+                
+                                <h5>PERCENTUAL DE ECONOMIA</h5>
+                
+                            </div>
+    
+                            <div class="row" style="margin: 20px">
+                        
+                                <h3><span id="percentualEconomia" class="badge badge-success"/>...</h3>
+                                        
+                            </div>
+                        
+                        </div>
+                           
+                    </div>
+
+                    <div class="row" style="margin: 15px">
+
+                            <div class="col-sm-12">
+
+                                <div class="row" style="margin: 20px">
+                        
+                                    <canvas class="bar-chart"></canvas>
+                
+                                </div>   
+                                
+                            </div>
+                    
+                    <div>
+                    
+                </div>
+
+            </div>
+
+        </div> 
+        
+        
+        <div class="container-fluid" style="padding-top: 50px">
+              
+            <div class="row">
+
+                <div class="col-12" style="border-radius: 10px; background-color: green;">
+                    <h4 align="center" style="padding: 5px; color:white">ANÁLISE FINANCEIRA</h4> 
+                </div>
+
+            </div>
+
+            </br>
+
+            <div class="row">
+
+                <div class="col-sm-5" style="background-color: rgb(255, 255, 255); border-radius: 10px; margin: 5px; margin-left: 30px">
+                    <div class="row" style="margin: 20px">
+                        
+                        <h5>INFORME O CONSUMO PLANEJADO</h5>
+
+                    </div>
+
+                   
+                    <div class="row" style="margin: 20px">
+                        <div class="col-sm-6">
+                            <input id="consumoPlanejado" type="number" value="" class="form-control" placeholder="0,00"/>
+                        </div>
+                        
+                        <div class="col-sm-6">
+                            <select id="periodoConsumo" class="form-control">
+                                <option value="1" selected disabled hidden>Informe a periodicidade</option>
+                                <option value="2">DIA</option>
+                                <option value="3">MÊS</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="row" style="margin: 20px">
+                        <h5>FEEDBACK</h5>
+                    </div>
+
+                    <div class="row" style="margin: 20px">
+                        <h6 id="feedBack1"></h6>
+                    </div>
+
+                    <div class="row" style="margin: 20px">
+                        <h6 id="feedBack2"></h6>
+                    </div>
+
+                  
+                </div>
+
+                <div class="col-sm-5" style="background-color: rgb(255, 255, 255); border-radius: 10px; margin: 5px;  margin-left: 180px">
+                    
+                    <div class="col-sm-12">
+
+                        <div class="row" style="margin: 20px">
+                
+                            <canvas class="doughnut-chart"></canvas>
+        
+                        </div>   
+                        
+                    </div>
+    
+                      
+                </div>
+            </div>
+
+
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js" integrity="sha256-qSIshlknROr4J8GMHRlW3fGKrPki733tLq+qeMCR05Q=" crossorigin="anonymous"></script>
+
+
+    <script>
+ 
+        $("#combUsibras").change(function(){
+            calc1();
+
+        });
+
+        $("#precoUsibras").change(function(){
+            calc1();
+
+        });
+
+        $("#combOutros").change(function(){
+            calc2();
+
+        });
+
+        $("#precoOutros").change(function(){
+            calc2();
+
+        });
+
+        $("#consumoPlanejado").change(function(){
+            consumoPlanejado();
+
+        });
+
+        function calc1(){
+                
+            var pciUsibras = $("#combUsibras").val();
+            var precoUsibras = $("#precoUsibras").val();
+            var precoUnitUsibras = precoUsibras / pciUsibras;
+
+            $("#pciUsibras").html(pciUsibras + " Kcal/Kg");
+            $("#precoUnitUsibras").html("R$ " + precoUnitUsibras.toFixed(5));
+
+            calcPercentual();
+            refreshGraph();
+
+        }
+
+
+        function calc2(){
+            
+            var pciOutros = $("#combOutros").val();
+            var precoOutros = $("#precoOutros").val();
+            var precoUnitOutros = precoOutros / pciOutros;
+
+            $("#pciOutros").html(pciOutros + " Kcal/kg");
+            $("#precoUnitOutros").html("R$ " + precoUnitOutros.toFixed(5));
+
+            calcPercentual();
+            refreshGraph();
+
+        }
+
+        function calcPercentual(){
+            
+            var combUsibras = $("#combUsibras :selected").text()
+            var pciUsibras = $("#combUsibras").val();
+            var precoUsibras = $("#precoUsibras").val();
+            var precoUnitUsibras = precoUsibras / pciUsibras;
+
+            var combOutros = $("#combOutros :selected").text()
+            var pciOutros = $("#combOutros").val();
+            var precoOutros = $("#precoOutros").val();
+            var precoUnitOutros = precoOutros / pciOutros;
+
+            // Calcula o percentual entre o menor e o maior custo por PCI
+            if(precoUnitUsibras < precoUnitOutros)
+                percentualEconomia = (((precoUnitUsibras / precoUnitOutros) - 1) * 100) * -1;
+            else if (precoUnitUsibras > precoUnitOutros)
+                percentualEconomia = (((precoUnitOutros / precoUnitUsibras) - 1) * 100) * -1;
+            else
+                percentualEconomia = 0;
+
+            $("#percentualEconomia").html(percentualEconomia.toFixed(0) + "%" );
+
+
+            // Verifica qual melhor opção entre os insumos
+            if(precoUnitUsibras < precoUnitOutros)
+                $("#melhorOpcao").html(combUsibras);
+            else if (precoUnitUsibras > precoUnitOutros)
+                $("#melhorOpcao").html(combOutros);
+            else 
+                $("#melhorOpcao").html("...");
+
+        }
+
+
+        function consumoPlanejado(){
+
+            var combUsibras = $("#combUsibras :selected").text()
+            var pciUsibras = $("#combUsibras").val();
+            var precoUsibras = $("#precoUsibras").val();
+            var precoUnitUsibras = precoUsibras / pciUsibras;
+
+            var combOutros = $("#combOutros :selected").text()
+            var pciOutros = $("#combOutros").val();
+            var precoOutros = $("#precoOutros").val();
+            var precoUnitOutros = precoOutros / pciOutros;
+
+            var consumoPlanejado = $("#consumoPlanejado").val();
+
+            var consumoTotal1 = pciUsibras * consumoPlanejado;
+            var cosumoTotal2 = pciOutros * consumoPlanejado;
+
+            $("#feedBack1").html("Quantidade de poder calorífico opção Usibras: " + consumoTotal1 );
+            $("#feedBack2").html("Quantidade de poder calorífico outra opção: " + consumoTotal2 );
+        }
+
+        var ctx = document.getElementsByClassName("bar-chart");
+        var ctx1 = document.getElementsByClassName("doughnut-chart");
+
+        // Type, Data e Options
+        
+        function refreshGraph(){
+            var combUsibras = $("#combUsibras :selected").text()
+            var pciUsibras = $("#combUsibras").val();
+            var precoUsibras = $("#precoUsibras").val();
+            var precoUnitUsibras = precoUsibras / pciUsibras;
+
+            var combOutros = $("#combOutros :selected").text()
+            var pciOutros = $("#combOutros").val();
+            var precoOutros = $("#precoOutros").val();
+            var precoUnitOutros = precoOutros / pciOutros;
+
+            var chartGraphBar = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: [combUsibras, combOutros],
+                    datasets: [{
+                        data: [precoUnitUsibras, precoUnitOutros],
+                        borderWidth: 2,
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(75, 192, 192, 1)',
+                        ],
+                            
+                        backgroundColor: [                                
+                            'rgba(255, 99, 132, 0.8)',                             
+                            'rgba(75, 192, 192, 0.8)',
+                        ],
+                    }],
+
+                },
+                options: {
+                    title: {
+                        display: true,
+                        fontSize: 16,
+                        text: "Comparação entre custos de Poder Calorífico"
+                    },
+                    legend: {
+                        display: false,
+                    },
+                    scales: {
+                        xAxes: [{
+                        stacked: true
+                    }]}
+                },
+
+            });
+
+            var chatGraphDoughnut = new Chart(ctx1, {
+                type: 'doughnut',
+                data: {
+                    labels: [combUsibras, combOutros],
+                    datasets: [{
+                        labels: "",
+                        data: [pciUsibras, pciOutros],
+                        borderWidth: 2,
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(75, 192, 192, 1)',
+                        ],
+                            
+                        backgroundColor: [                                
+                            'rgba(255, 99, 132, 0.8)',                             
+                            'rgba(75, 192, 192, 0.8)',
+                        ],
+                    }],
+
+                },
+                options: {
+                    title: {
+                        display: true,
+                        fontSize: 16,
+                        text: "Comparação Poder Calorífico"
+                    },
+                    legend: {
+                        display: true,
+                        position: 'right',
+                        fullWidth: true,
+                        
+                    }
+                }
+
+            });
+        }
+
+    </script>
+    </body>
+</html>
