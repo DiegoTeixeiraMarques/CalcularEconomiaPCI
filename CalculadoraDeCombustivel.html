@@ -159,28 +159,33 @@
                         </div>
                         
                         <div class="col-sm-6">
-                            <select id="periodoConsumo" class="form-control">
-                                <option value="1" selected disabled hidden>Informe a periodicidade</option>
-                                <option value="2">DIA</option>
-                                <option value="3">MÊS</option>
-                            </select>
+                            <div class="radio">
+                                <input type="radio" name="radio1" id="radio1" value="option1" checked>
+                                <label for="radio1">
+                                    Consumo Diário
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <input type="radio" name="radio1" id="radio2" value="option2">
+                                <label for="radio2">
+                                    Consumo Mensal
+                            </label>
                         </div>
 
+                    </div> 
+
+                    <div class="row" style="margin: 20px">
+                        
+                        <h5>INFORME O INVESTIMENTO NECESSÁRIO</h5>
+
                     </div>
 
                     <div class="row" style="margin: 20px">
-                        <h5>FEEDBACK</h5>
+                        
+                        <div class="col-sm-12">
+                            <input id="consumoPlanejado" type="number" value="" class="form-control" placeholder="0,00"/>
+                        </div>
                     </div>
-
-                    <div class="row" style="margin: 20px">
-                        <h6 id="feedBack1"></h6>
-                    </div>
-
-                    <div class="row" style="margin: 20px">
-                        <h6 id="feedBack2"></h6>
-                    </div>          
-                
-                    
                     
                 </div>
 
@@ -236,15 +241,66 @@
                 <div class="col-sm-6">
                     <div class="col-sm-12" style="background-color: rgb(255, 255, 255); border-radius: 10px">
                         <div class="row" style="margin: 20px;">
-                            <div class="col-sm-6">    
-                                <div class="row" style="margin: 20px">                        
-                                    <h5>OPÇÃO MAIS ECONÔMICA</h5>                
-                                </div>    
-                                <div class="row" style="margin: 20px">                            
-                                    <h3><span id="melhorOpcao" class="badge badge-success"/>...</h3>                                            
-                                </div>                                        
-                            </div>           
-                        </div>                    
+                            <div class="col-sm-6">
+                                
+                                <div class="row" style="margin: 20px"></div>    
+                                                    
+                                <h5 align="center">OPÇÃO MAIS ECONÔMICA</h5>                
+                                 
+                                <div class="row" style="margin: 20px"></div>                              
+                                
+                                <h3 align="center"><span id="melhorOpcao" class="badge badge-success"/>...</h3>  
+                                
+                                <div class="row" style="margin: 20px"></div>
+                                                                      
+                            </div>
+                            
+                            <div class="col-sm-6">  
+                                
+                                <div class="row" style="margin: 20px"></div>
+                                                   
+                                <h5 align="center">PERCENTUAL DE ECONOMIA</h5>                    
+                                      
+                                <div class="row" style="margin: 20px"></div>
+
+                                <h3 align="center"><span id="percentualEconomia" class="badge badge-success"/>...</h3> 
+                                
+                                <div class="row" style="margin: 20px"></div>
+                                                                       
+                            </div>
+                        </div>
+                        
+                        <div class="row" style="margin: 20px;">
+
+                            <div class="col-sm-6 border">    
+                                
+                                    <h5 align="center" >EQUIVALÊNCIA EM PESO</h5>
+
+                                    <div class="row" style="margin: 20px">                            
+                                                                                    
+                                    </div>
+
+                                    <h3 align="center"><span id="" class="badge badge-success"/>1 kg</h3>
+                                    <h3 align="center"><span id="pesoEquivalente" class="badge badge-success"/>...</h3>
+
+                                    <div class="row" style="margin: 20px"></div>
+                                            
+                            </div>
+
+                            <div class="col-sm-6 border">    
+                                
+                                    <h5 align="center" >EQUIVALÊNCIA EM CUSTO</h5>
+
+                                    <div class="row" style="margin: 20px">                            
+                                                                                    
+                                    </div>
+
+                                    <h3 align="center"><span id="percentualEconomia" class="badge badge-success"/>...</h3>
+
+                                    <div class="row" style="margin: 20px"></div>
+                                            
+                            </div>
+                        </div>   
                     </div>         
                 </div>
 
@@ -252,12 +308,7 @@
                     <div class="col-sm-12" style="background-color: rgb(255, 255, 255); border-radius: 10px">
                         <div class="row" style="margin: 20px">                
                             <div class="col-sm-6">
-                                <div class="row" style="margin: 20px">                    
-                                    <h5>PERCENTUAL DE ECONOMIA</h5>                    
-                                </div>        
-                                <div class="row" style="margin: 20px">                            
-                                    <h3><span id="percentualEconomia" class="badge badge-success"/>...</h3>                                            
-                                </div>                                
+                                                             
                             </div>        
                         </div>   
                     </div>             
@@ -272,98 +323,14 @@
 
     <script>
  
-        $("#combUsibras").change(function(){
-            calc1();
-
-        });
-
-        $("#precoUsibras").change(function(){
-            calc1();
-
-        });
-
-        $("#combOutros").change(function(){
-            calc2();
-
-        });
-
-        $("#precoOutros").change(function(){
-            calc2();
-
-        });
-
-        $("#consumoPlanejado").change(function(){
-            consumoPlanejado();
-
-        });
-
-        function calc1(){
-                
-            var pciUsibras = $("#combUsibras").val();
-            var precoUsibras = $("#precoUsibras").val();
-            var precoUnitUsibras = precoUsibras / pciUsibras;
-
-            $("#pciUsibras").html(pciUsibras + " Kcal/Kg");
-            $("#precoUnitUsibras").html("R$ " + precoUnitUsibras.toFixed(5));
-
-            calcPercentual();
-            refreshGraph();
-            consumoPlanejado();
-
-        }
+        $("#combUsibras").change(function(){atualizar();});
+        $("#precoUsibras").change(function(){atualizar();});
+        $("#combOutros").change(function(){atualizar();});
+        $("#precoOutros").change(function(){atualizar();});
+        $("#consumoPlanejado").change(function(){atualizar();});
 
 
-        function calc2(){
-            
-            var pciOutros = $("#combOutros").val();
-            var precoOutros = $("#precoOutros").val();
-            var precoUnitOutros = precoOutros / pciOutros;
-
-            $("#pciOutros").html(pciOutros + " Kcal/kg");
-            $("#precoUnitOutros").html("R$ " + precoUnitOutros.toFixed(5));
-
-            calcPercentual();
-            refreshGraph();
-            consumoPlanejado();
-
-        }
-
-        function calcPercentual(){
-            
-            var combUsibras = $("#combUsibras :selected").text()
-            var pciUsibras = $("#combUsibras").val();
-            var precoUsibras = $("#precoUsibras").val();
-            var precoUnitUsibras = precoUsibras / pciUsibras;
-
-            var combOutros = $("#combOutros :selected").text()
-            var pciOutros = $("#combOutros").val();
-            var precoOutros = $("#precoOutros").val();
-            var precoUnitOutros = precoOutros / pciOutros;
-
-            // Calcula o percentual entre o menor e o maior custo por PCI
-            if(precoUnitUsibras < precoUnitOutros)
-                percentualEconomia = (((precoUnitUsibras / precoUnitOutros) - 1) * 100) * -1;
-            else if (precoUnitUsibras > precoUnitOutros)
-                percentualEconomia = (((precoUnitOutros / precoUnitUsibras) - 1) * 100) * -1;
-            else
-                percentualEconomia = 0;
-
-            $("#percentualEconomia").html(percentualEconomia.toFixed(0) + "%" );
-
-
-            // Verifica qual melhor opção entre os insumos
-            if(precoUnitUsibras < precoUnitOutros)
-                $("#melhorOpcao").html(combUsibras);
-            else if (precoUnitUsibras > precoUnitOutros)
-                $("#melhorOpcao").html(combOutros);
-            else 
-                $("#melhorOpcao").html("...");
-
-        }
-
-
-        function consumoPlanejado(){
-
+        function atualizar(){
             var combUsibras = $("#combUsibras :selected").text()
             var pciUsibras = $("#combUsibras").val();
             var precoUsibras = $("#precoUsibras").val();
@@ -375,22 +342,66 @@
             var precoUnitOutros = precoOutros / pciOutros;
 
             var consumoPlanejado = $("#consumoPlanejado").val();
-
             var pciTotalUsibras = pciUsibras * consumoPlanejado;
             var pciTotalOutros = pciOutros * consumoPlanejado;
+
+            var custoTotalusibras = precoUsibras * consumoPlanejado;
+            var custoTotalOutros = precoOutros * consumoPlanejado;
+
+            // Calcula o percentual entre o menor e o maior custo por PCI
+            if(precoUnitUsibras < precoUnitOutros)
+                percentualEconomia = (((precoUnitUsibras / precoUnitOutros) - 1) * 100) * -1;
+            else if (precoUnitUsibras > precoUnitOutros)
+                percentualEconomia = (((precoUnitOutros / precoUnitUsibras) - 1) * 100) * -1;
+            else
+                percentualEconomia = 0;
+
+            // Verifica qual melhor opção entre os insumos
+            if(precoUnitUsibras < precoUnitOutros)
+                $("#melhorOpcao").html(combUsibras);
+            else if (precoUnitUsibras > precoUnitOutros)
+                $("#melhorOpcao").html(combOutros);
+            else 
+                $("#melhorOpcao").html("...");
+
+            // Calcula Equivalência de KG
+            var pesoEquivalente = ((pciUsibras - pciOutros) / pciUsibras) + pciOutros;
+
+            $("#pesoEquivalente").html(pesoEquivalente.toFixed(2));
+            
+            $("#pciUsibras").html(pciUsibras + " Kcal/Kg");
+            $("#precoUnitUsibras").html("R$ " + precoUnitUsibras.toFixed(5));
+
+            $("#pciOutros").html(pciOutros + " Kcal/kg");
+            $("#precoUnitOutros").html("R$ " + precoUnitOutros.toFixed(5));
+
+            $("#percentualEconomia").html(percentualEconomia.toFixed(0) + "%" );
 
             $("#feedBack1").html("PODER CALORÍFICO TOTAL (USIBRAS): " + pciTotalUsibras );
             $("#feedBack2").html("PODER CALORÍFICO TOTAL (SEGUNDA OPÇÃO): " + pciTotalOutros );
 
-            refreshGraph2(combUsibras, combOutros, pciTotalUsibras, pciTotalOutros)
+            refreshGraph();
+            refreshGraph2(combUsibras, combOutros, pciTotalUsibras, pciTotalOutros);
         }
 
-        var ctx = document.getElementsByClassName("bar-chart");
-        var ctx1 = document.getElementsByClassName("doughnut-chart");
+
+
+
+
+  
+
+
+        
+
+       
 
         // Type, Data e Options
         
         function refreshGraph(){
+
+            var ctx = document.getElementsByClassName("bar-chart");
+            
+
             var combUsibras = $("#combUsibras :selected").text()
             var pciUsibras = $("#combUsibras").val();
             var precoUsibras = $("#precoUsibras").val();
@@ -440,6 +451,9 @@
         }
 
         function refreshGraph2(combUsibras, combOutros, pciTotalUsibras, pciTotalOutros){
+
+
+            var ctx1 = document.getElementsByClassName("doughnut-chart");
 
             var combUsibras = combUsibras;
             var combOutros = combOutros;
