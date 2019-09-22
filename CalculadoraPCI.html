@@ -190,11 +190,14 @@
 
                 
                 <div class="col-sm-6" style="padding-left: 50px">
-                    <div class="row" style="padding-bottom: 30px"> 
+                    <div class="row" id="graph3"> 
+                        <canvas class="line-chart"></canvas>
+                    </div>  
+                    <div class="row" style="padding-bottom: 30px" id="graph"> 
                         <canvas class="bar-chart" width= "3000" height="1000"></canvas>
                     </div>
-                    <div class="row"> 
-                        <canvas class="doughnut-chart" ></canvas>
+                    <div class="row" id="graph2"> 
+                        <canvas class="doughnut-chart"></canvas>
                     </div>  
                 </div>
 
@@ -298,6 +301,7 @@
 
         var ctx = document.getElementsByClassName("bar-chart");
         var ctx1 = document.getElementsByClassName("doughnut-chart");
+        var ctx2 = document.getElementsByClassName("line-chart");
 
         // Type, Data e Options
         
@@ -311,6 +315,12 @@
             var fuel1 = $("#fuel1").val();
             var price1 = $("#price1").val();
             var vrPci1 = price1 / fuel1;
+
+            document.getElementById("graph").innerHTML = '&nbsp;';
+            document.getElementById("graph").innerHTML = '<canvas class="bar-chart" width= "3000" height="1000"></canvas>';
+
+            document.getElementById("graph2").innerHTML = '&nbsp;';
+            document.getElementById("graph2").innerHTML = '<canvas class="doughnut-chart"></canvas>';
 
             var chartGraphBar = new Chart(ctx, {
                 type: 'bar',
@@ -380,6 +390,30 @@
                         fullWidth: true,
                         
                     }
+                }
+
+            });
+
+            var datasetdia = [{ 
+                        data: [10 * 2,10 * 3,10 * 4,10 * 5,10 * 6,10 * 7,10 * 8,10 * 9,10 * 10,10 * 11],
+                        label: insumo1,
+                        borderColor: "#3e95cd",
+                        fill: false
+                    }, { 
+                        data: [5 * 2,5 * 3,5 * 4,5 * 5,5 * 6,5 * 7,5 * 8,5 * 9,5 * 10,5 * 11],
+                        label: insumo2,
+                        borderColor: "#8e5ea2",
+                        fill: false
+                    }
+                    ];
+            var chatGraphLine = new Chart(ctx2, {
+                type: 'line',
+                data: {
+                    labels: [1,2,3,4,5,6,7,8,9,10],
+                    datasets: datasetdia,
+                },
+                options: {
+                    
                 }
 
             });

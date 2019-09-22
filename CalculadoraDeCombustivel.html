@@ -34,7 +34,7 @@
                     <div class="row" style="margin: 20px">
                         
                         <select id="combUsibras" class="form-control">
-                            <option value="1" selected disabled hidden>Escolha uma opção</option>
+                            <option value="0" selected disabled hidden>Escolha uma opção</option>
                             <option value="4700">PELLET USIBRAS</option>
                             <option value="4900">LCC USIBRAS</option>
                             <option value="4700">CASCA CAJU USIBRAS</option>
@@ -80,7 +80,7 @@
                     <div class="row" style="margin: 20px">
                         
                         <select id="combOutros" class="form-control">
-                            <option value="1" selected disabled hidden>Escolha uma opção</option>
+                            <option value="0" selected disabled hidden>Escolha uma opção</option>
                             <option value="6300">APARAS VINILO</option>
 
                             <option value="3200">BAGAÇO DE CANA (20% ÁGUA)</option>
@@ -160,16 +160,17 @@
                         
                         <div class="col-sm-6">
                             <div class="radio">
-                                <input type="radio" name="radio1" id="radio1" value="option1" checked>
-                                <label for="radio1">
+                                <input type="radio" name="radio" id="radio" value="Consumo Diário" checked>
+                                <label for="radio">
                                     Consumo Diário
                                 </label>
                             </div>
                             <div class="radio">
-                                <input type="radio" name="radio1" id="radio2" value="option2">
-                                <label for="radio2">
+                                <input type="radio" name="radio" id="radio" value="Consumo Mensal">
+                                <label for="radio">
                                     Consumo Mensal
-                            </label>
+                                </label>
+                            </div>
                         </div>
 
                     </div> 
@@ -183,7 +184,7 @@
                     <div class="row" style="margin: 20px">
                         
                         <div class="col-sm-12">
-                            <input id="consumoPlanejado" type="number" value="" class="form-control" placeholder="0,00"/>
+                            <input id="investimentoNecessario" type="number" value="" class="form-control" placeholder="0,00"/>
                         </div>
                     </div>
                     
@@ -213,7 +214,7 @@
                     <div class="col-sm-12" style="background-color: rgb(255, 255, 255); border-radius: 10px">
                         <div class="row" style="margin: 20px">            
                             <div class="col-sm-12">
-                                <div class="row" style="margin: 20px">                        
+                                <div class="row" style="margin: 20px" id="graph1">                        
                                     <canvas class="bar-chart"></canvas>                
                                 </div>                                 
                             </div>        
@@ -225,8 +226,20 @@
                     <div class="col-sm-12" style="background-color: rgb(255, 255, 255); border-radius: 10px;">
                         <div class="row" style="margin: 20px;">    
                             <div class="col-sm-12">
-                                <div class="row" style="margin: 20px">                        
+                                <div class="row" style="margin: 20px" id="graph2">                        
                                     <canvas class="doughnut-chart"></canvas>                
+                                </div>                                 
+                            </div>
+                        </div>                       
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="col-sm-12" style="background-color: rgb(255, 255, 255); border-radius: 10px;">
+                        <div class="row" style="margin: 20px;">    
+                            <div class="col-sm-12">
+                                <div class="row" style="margin: 20px" id="graph3">                        
+                                    <canvas class="line-chart"></canvas>                
                                 </div>                                 
                             </div>
                         </div>                       
@@ -281,7 +294,7 @@
                                     </div>
 
                                     <h3 align="center"><span id="" class="badge badge-success"/>1 kg</h3>
-                                    <h3 align="center"><span id="pesoEquivalente" class="badge badge-success"/>...</h3>
+                                    <h3 align="center"><span id="pesoEquivalenteOutros" class="badge badge-success"/>...</h3>
 
                                     <div class="row" style="margin: 20px"></div>
                                             
@@ -323,96 +336,153 @@
 
     <script>
  
-        $("#combUsibras").change(function(){atualizar();});
-        $("#precoUsibras").change(function(){atualizar();});
-        $("#combOutros").change(function(){atualizar();});
-        $("#precoOutros").change(function(){atualizar();});
-        $("#consumoPlanejado").change(function(){atualizar();});
+        $("#combUsibras").change(function(){           calc1();        });
+        $("#precoUsibras").change(function(){          calc1();        });
+        $("#combOutros").change(function(){            calc2();        });
+        $("#precoOutros").change(function(){           calc2();        });
+        $("#consumoPlanejado").change(function(){      calcPercentual();        });
+        $("#investimentoNecessario").change(function(){      calcPercentual();        });
 
-
-        function atualizar(){
-            var combUsibras = $("#combUsibras :selected").text()
+        function calc1(){
             var pciUsibras = $("#combUsibras").val();
             var precoUsibras = $("#precoUsibras").val();
-            var precoUnitUsibras = precoUsibras / pciUsibras;
-
-            var combOutros = $("#combOutros :selected").text()
-            var pciOutros = $("#combOutros").val();
-            var precoOutros = $("#precoOutros").val();
-            var precoUnitOutros = precoOutros / pciOutros;
-
-            var consumoPlanejado = $("#consumoPlanejado").val();
-            var pciTotalUsibras = pciUsibras * consumoPlanejado;
-            var pciTotalOutros = pciOutros * consumoPlanejado;
-
-            var custoTotalusibras = precoUsibras * consumoPlanejado;
-            var custoTotalOutros = precoOutros * consumoPlanejado;
-
-            // Calcula o percentual entre o menor e o maior custo por PCI
-            if(precoUnitUsibras < precoUnitOutros)
-                percentualEconomia = (((precoUnitUsibras / precoUnitOutros) - 1) * 100) * -1;
-            else if (precoUnitUsibras > precoUnitOutros)
-                percentualEconomia = (((precoUnitOutros / precoUnitUsibras) - 1) * 100) * -1;
-            else
-                percentualEconomia = 0;
-
-            // Verifica qual melhor opção entre os insumos
-            if(precoUnitUsibras < precoUnitOutros)
-                $("#melhorOpcao").html(combUsibras);
-            else if (precoUnitUsibras > precoUnitOutros)
-                $("#melhorOpcao").html(combOutros);
-            else 
-                $("#melhorOpcao").html("...");
-
-            // Calcula Equivalência de KG
-            var pesoEquivalente = ((pciUsibras - pciOutros) / pciUsibras) + pciOutros;
-
-            $("#pesoEquivalente").html(pesoEquivalente.toFixed(2));
-            
+            var precoUnitUsibras = (precoUsibras / pciUsibras).toFixed(5);
             $("#pciUsibras").html(pciUsibras + " Kcal/Kg");
-            $("#precoUnitUsibras").html("R$ " + precoUnitUsibras.toFixed(5));
-
-            $("#pciOutros").html(pciOutros + " Kcal/kg");
-            $("#precoUnitOutros").html("R$ " + precoUnitOutros.toFixed(5));
-
-            $("#percentualEconomia").html(percentualEconomia.toFixed(0) + "%" );
-
-            $("#feedBack1").html("PODER CALORÍFICO TOTAL (USIBRAS): " + pciTotalUsibras );
-            $("#feedBack2").html("PODER CALORÍFICO TOTAL (SEGUNDA OPÇÃO): " + pciTotalOutros );
-
-            refreshGraph();
-            refreshGraph2(combUsibras, combOutros, pciTotalUsibras, pciTotalOutros);
+            $("#precoUnitUsibras").html("R$ " + precoUnitUsibras);
+            calcPercentual();
         }
 
-
-
-
-
-  
-
-
-        
-
-       
-
-        // Type, Data e Options
-        
-        function refreshGraph(){
-
-            var ctx = document.getElementsByClassName("bar-chart");
-            
-
-            var combUsibras = $("#combUsibras :selected").text()
-            var pciUsibras = $("#combUsibras").val();
-            var precoUsibras = $("#precoUsibras").val();
-            var precoUnitUsibras = precoUsibras / pciUsibras;
-
-            var combOutros = $("#combOutros :selected").text()
+        function calc2(){
             var pciOutros = $("#combOutros").val();
             var precoOutros = $("#precoOutros").val();
-            var precoUnitOutros = precoOutros / pciOutros;
+            var precoUnitOutros = (precoOutros / pciOutros).toFixed(5);
+            $("#pciOutros").html(pciOutros + " Kcal/kg");
+            $("#precoUnitOutros").html("R$ " + precoUnitOutros);
+            calcPercentual();
+        }
 
-            var chartGraphBar = new Chart(ctx, {
+        function calcPercentual(){
+            var combUsibras = $("#combUsibras :selected").text();
+            var pciUsibras = $("#combUsibras").val();
+            var precoUsibras = $("#precoUsibras").val();
+            var precoUnitUsibras = (precoUsibras / pciUsibras).toFixed(5);
+
+            var combOutros = $("#combOutros :selected").text();
+            var pciOutros = $("#combOutros").val();
+            var precoOutros = $("#precoOutros").val();
+            var precoUnitOutros = (precoOutros / pciOutros).toFixed(5);
+
+            var percentual = 0;
+            var pesoEquivalenteUsibras = 0;
+            var pesoEquivalenteOutros = 0;
+            var proporcaoTotalKgUsibras = 0;
+            var proporcaoTotalKgOutros = 0;
+            var precoTotalEquivalenteUsibras = 0;
+            var precoTotalEquivalenteOutros = 0;
+            var economiaTotal = 0;
+            var tempoRetornoInvestimento = 0;
+
+            var consumoPlanejado = $("#consumoPlanejado").val();
+            var investimentoNecessario = $("#investimentoNecessario").val();
+            var periodicidadeConsumo = $("input[name='radio']:checked").val();
+
+            console.log(periodicidadeConsumo);
+
+            if(combUsibras != "" && combOutros != "" && precoUsibras != "" && precoOutros != ""){
+                // Calcula o percentual entre o menor e o maior custo por PCI
+                if(precoUnitUsibras < precoUnitOutros)
+                    percentual = (((precoUnitUsibras / precoUnitOutros) - 1) * 100) * -1;
+                else if (precoUnitUsibras > precoUnitOutros)
+                    percentual = (((precoUnitOutros / precoUnitUsibras) - 1) * 100) * -1;
+                else
+                    percentual = 0;
+                $("#percentualEconomia").html(percentual.toFixed(0) + "% mais econômico" );
+
+
+                // Verifica qual melhor opção entre os insumos
+                if(precoUnitUsibras < precoUnitOutros)
+                    $("#melhorOpcao").html(combUsibras);
+                else if (precoUnitUsibras > precoUnitOutros)
+                    $("#melhorOpcao").html(combOutros);
+                else 
+                    $("#melhorOpcao").html("...");
+
+
+                // Calcula equivalência por peso
+                if((pciUsibras - pciOutros) < 0){
+                    pesoEquivalenteUsibras = ((pciOutros - pciUsibras) / pciUsibras) + 1;
+                    pesoEquivalenteOutros = 1;
+                } else {
+                    pesoEquivalenteOutros = ((pciUsibras - pciOutros) / pciUsibras) + 1;
+                    pesoEquivalenteUsibras = 1;
+                }
+
+                console.log("Peso equivalente Usibras: " + pesoEquivalenteUsibras.toFixed(2));
+                console.log("Peso equivalente Outros: " + pesoEquivalenteOutros.toFixed(2));
+        
+                proporcaoTotalKgUsibras = consumoPlanejado * pesoEquivalenteUsibras;
+                proporcaoTotalKgOutros = consumoPlanejado * pesoEquivalenteOutros;
+                console.log("Consumo planejado Usibras: " + proporcaoTotalKgUsibras.toFixed(2));
+                console.log("Consumo planejado Outros: " + proporcaoTotalKgOutros.toFixed(2));
+
+                // Calcula equivalência por preço
+                precoTotalEquivalenteUsibras = proporcaoTotalKgUsibras * precoUsibras;
+                precoTotalEquivalenteOutros = proporcaoTotalKgOutros * precoOutros;
+               
+                if(precoTotalEquivalenteUsibras < precoTotalEquivalenteOutros){
+                    economiaTotal = precoTotalEquivalenteOutros - precoTotalEquivalenteUsibras;
+                } else if(precoTotalEquivalenteOutros < precoTotalEquivalenteUsibras){
+                    economiaTotal = 0;
+                }
+
+                console.log("Preco total Usibras: " + precoTotalEquivalenteUsibras.toFixed(2));
+                console.log("Preco total Outros: " + precoTotalEquivalenteOutros.toFixed(2));
+                console.log("Economia total: " + economiaTotal.toFixed(2));
+
+                console.log(investimentoNecessario);
+                if(economiaTotal == 0 && investimentoNecessario > 0 && consumoPlanejado > 0){
+                    tempoRetornoInvestimento = "Não retorna";
+                } else
+                    tempoRetornoInvestimento = investimentoNecessario / economiaTotal;
+
+                console.log("Retorno do investimento em:  " + tempoRetornoInvestimento);
+
+                atualizarGraficos(economiaTotal, precoTotalEquivalenteUsibras, precoTotalEquivalenteOutros);
+            }
+
+        }
+
+        var ctx1 = document.getElementsByClassName("bar-chart");
+        var ctx2 = document.getElementsByClassName("doughnut-chart");
+        var ctx3 = document.getElementsByClassName("line-chart");
+
+        function atualizarGraficos(economiaTotal, precoTotalEquivalenteUsibras, precoTotalEquivalenteOutros){
+            var combUsibras = $("#combUsibras :selected").text();
+            var pciUsibras = $("#combUsibras").val();
+            var precoUsibras = $("#precoUsibras").val();
+            var precoUnitUsibras = (precoUsibras / pciUsibras).toFixed(5);
+
+            var combOutros = $("#combOutros :selected").text();
+            var pciOutros = $("#combOutros").val();
+            var precoOutros = $("#precoOutros").val();
+            var precoUnitOutros = (precoOutros / pciOutros).toFixed(5);
+
+            var precoTotalEquivalenteUsibras = precoTotalEquivalenteUsibras;
+            var precoTotalEquivalenteOutros = precoTotalEquivalenteOutros;
+            var economiaTotal = economiaTotal;
+            var periodicidadeConsumo = $("input[name='radio']:checked").val();
+            var dataSetGraficoLinha = {};
+
+            document.getElementById("graph1").innerHTML = '&nbsp;';
+            document.getElementById("graph1").innerHTML = '<canvas class="bar-chart" width= "3000" height="1000"></canvas>';
+
+            document.getElementById("graph2").innerHTML = '&nbsp;';
+            document.getElementById("graph2").innerHTML = '<canvas class="doughnut-chart"></canvas>';
+
+            document.getElementById("graph3").innerHTML = '&nbsp;';
+            document.getElementById("graph3").innerHTML = '<canvas class="line-chart"></canvas>';
+
+            var chartGraphBar = new Chart(ctx1, {
                 type: 'bar',
                 data: {
                     labels: [combUsibras, combOutros],
@@ -423,19 +493,17 @@
                             'rgba(255, 99, 132, 1)',
                             'rgba(75, 192, 192, 1)',
                         ],
-                            
                         backgroundColor: [                                
                             'rgba(255, 99, 132, 0.8)',                             
                             'rgba(75, 192, 192, 0.8)',
                         ],
                     }],
-
                 },
                 options: {
                     title: {
                         display: true,
                         fontSize: 16,
-                        text: "Comparação entre custos de Poder Calorífico"
+                        text: "Custo por unidade de Poder Calorífico"
                     },
                     legend: {
                         display: false,
@@ -448,55 +516,107 @@
 
             });
 
-        }
-
-        function refreshGraph2(combUsibras, combOutros, pciTotalUsibras, pciTotalOutros){
-
-
-            var ctx1 = document.getElementsByClassName("doughnut-chart");
-
-            var combUsibras = combUsibras;
-            var combOutros = combOutros;
-            var pciTotalUsibras = pciTotalUsibras;
-            var pciTotalOutros = pciTotalOutros;
-
-            var chatGraphDoughnut = new Chart(ctx1, {
+            var chartGraphDoughnut = new Chart(ctx2, {
                 type: 'doughnut',
                 data: {
                     labels: [combUsibras, combOutros],
                     datasets: [{
                         labels: "",
-                        data: [pciTotalUsibras, pciTotalOutros],
+                        data: [pciUsibras, pciOutros],
                         borderWidth: 2,
                         borderColor: [
                             'rgba(255, 99, 132, 1)',
                             'rgba(75, 192, 192, 1)',
-                        ],
-                            
+                        ],   
                         backgroundColor: [                                
                             'rgba(255, 99, 132, 0.8)',                             
                             'rgba(75, 192, 192, 0.8)',
                         ],
                     }],
-
                 },
                 options: {
                     title: {
                         display: true,
                         fontSize: 16,
-                        text: "PODER CAOLORÍFICO TOTAL GERADO PELO CONSUMO INFORMADO"
+                        text: "Quantidade de Poder Calorífico por KG"
                     },
                     legend: {
                         display: true,
-                        position: 'right',
-                        fullWidth: true,
-                        
+                        position: 'bottom',
+                        fullWidth: true,     
                     }
                 }
+            });
 
-                });
+            // Verifica a periodicidade e produz o dataset
+            if (periodicidadeConsumo == "Consumo Diário"){
+
+                A = [];
+                B = [];
+                C = [];
+                D = "Custo diário durante um ano"
+
+                for (var i = 0; i < 366; i++){
+                    A[i] = i * precoTotalEquivalenteUsibras.toFixed(2);
+                    B[i] = i * precoTotalEquivalenteOutros.toFixed(2);
+                    C[i] = i;
+                }
+
+                dataSetGraficoLinha = [{ 
+                            data: A,
+                            label: combUsibras,
+                            borderColor: "#3e95cd",
+                            fill: false
+                        }, { 
+                            data: B,
+                            label: combOutros,
+                            borderColor: "#8e5ea2",
+                            fill: false
+                        }
+                        ];
+            } else {
+                A = [];
+                B = [];
+                C = [];
+                D = "Custo mensal durante três anos"
+
+                for (var i = 0; i < 36; i++){
+                    A[i] = i * precoTotalEquivalenteUsibras.toFixed(2);
+                    B[i] = i * precoTotalEquivalenteOutros.toFixed(2);
+                    C[i] = i;
+                }
+
+                dataSetGraficoLinha = [{ 
+                            data: A,
+                            label: combUsibras,
+                            borderColor: "#3e95cd",
+                            fill: false
+                        }, { 
+                            data: B,
+                            label: combOutros,
+                            borderColor: "#8e5ea2",
+                            fill: false
+                        }
+                        ];
+
             }
 
+            var chartGraphLine = new Chart(ctx3, {
+                type: 'line',
+                data: {
+                    labels: C,
+                    datasets: dataSetGraficoLinha,
+                },
+                options: {
+                    title: {
+                        display: true,
+                        fontSize: 16,
+                        text: D
+                    },
+                }
+
+            });
+        }
     </script>
     </body>
 </html>
