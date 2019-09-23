@@ -15,7 +15,7 @@
             <div class="row">
 
                 <div class="col-12" style="border-radius: 10px; background-color: green">
-                    <h4 align="center" style="padding: 5px; color:white">COMPARAÇÃO CUSTO DE PODER CALORÍFICO</h4> 
+                    <h4 align="center" style="padding: 5px; color:white">COMPARAÇÃO DE COMBUSTÍVEIS PARA QUEIMA EM CALDEIRA</h4> 
                 </div>
 
             </div>
@@ -236,21 +236,14 @@
                     <div class="col-sm-12" style="background-color: rgb(255, 255, 255); border-radius: 10px">
                         <div class="row" style="margin: 20px">            
                             <div class="col-sm-12">
-                                <div class="row" style="margin: 20px" id="graph1">                        
-                                    <canvas class="bar-chart"></canvas>              
+                                <div class="row" style="margin: 20px" id="graph4">                        
+                                    <canvas class="bar-chart-2"></canvas>              
                                 </div>                                 
                             </div>        
                         </div>                           
                     </div>      
                     </div>
             </div>
-
-            
-    
-        
-
-
-
         </div>
 
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
@@ -389,7 +382,7 @@
 
                 console.log("Retorno do investimento em:  " + tempoRetornoInvestimento);
 
-                atualizarGraficos(economiaTotal, precoTotalEquivalenteUsibras, precoTotalEquivalenteOutros);
+                atualizarGraficos(economiaTotal, precoTotalEquivalenteUsibras, precoTotalEquivalenteOutros, pesoEquivalenteUsibras, pesoEquivalenteOutros, precoEquivalenteUsibras, precoEquivalenteOutros);
             }
 
         }
@@ -397,8 +390,9 @@
         var ctx1 = document.getElementsByClassName("bar-chart");
         var ctx2 = document.getElementsByClassName("doughnut-chart");
         var ctx3 = document.getElementsByClassName("line-chart");
+        var ctx4 = document.getElementsByClassName("line-chart-2");
 
-        function atualizarGraficos(economiaTotal, precoTotalEquivalenteUsibras, precoTotalEquivalenteOutros){
+        function atualizarGraficos(economiaTotal, precoTotalEquivalenteUsibras, precoTotalEquivalenteOutros, pesoEquivalenteUsibras, pesoEquivalenteOutros, precoEquivalenteUsibras, precoEquivalenteOutros){
             var combUsibras = $("#combUsibras :selected").text();
             var pciUsibras = $("#combUsibras").val();
             var precoUsibras = $("#precoUsibras").val();
@@ -414,6 +408,10 @@
             var economiaTotal = economiaTotal;
             var periodicidadeConsumo = $("input[name='radio']:checked").val();
             var dataSetGraficoLinha = {};
+            var pesoEquivalenteUsibras = pesoEquivalenteUsibras;
+            var pesoEquivalenteOutros = pesoEquivalenteOutros;
+            var precoEquivalenteUsibras = precoEquivalenteUsibras;
+            var precoEquivalenteOutros = precoEquivalenteOutros;
 
             document.getElementById("graph1").innerHTML = '&nbsp;';
             document.getElementById("graph1").innerHTML = '<canvas class="bar-chart"></canvas>';
@@ -424,12 +422,15 @@
             document.getElementById("graph3").innerHTML = '&nbsp;';
             document.getElementById("graph3").innerHTML = '<canvas class="line-chart"></canvas>';
 
+            document.getElementById("graph4").innerHTML = '&nbsp;';
+            document.getElementById("graph4").innerHTML = '<canvas class="line-chart-2"></canvas>';
+
             var chartGraphBar = new Chart(ctx1, {
                 type: 'bar',
                 data: {
                     labels: [combUsibras, combOutros],
                     datasets: [{
-                        data: [precoUnitUsibras, precoUnitOutros],
+                        data: [pesoEquivalenteUsibras, pesoEquivalenteOutros],
                         borderWidth: 2,
                         borderColor: [
                             'rgba(255, 99, 132, 1)',
@@ -445,16 +446,70 @@
                     title: {
                         display: true,
                         fontSize: 16,
-                        text: "Custo por unidade de Poder Calorífico"
+                        text: "Equivalência em quilo para obter o mesmo rendimento"
                     },
                     legend: {
                         display: false,
                     },
+
                     scales: {
                         xAxes: [{
-                        stacked: true
-                    }]}
+                            beginAtZero: true,
+                            
+                        }],
+                        yAxes: [{
+
+                            ticks: {
+                            
+                            min: 0,
+                        }
+                        }]
+                    }
+                }   
+
+            });
+
+            var chartGraphBar2 = new Chart(ctx4, {
+                type: 'horizontalBar',
+                data: {
+                    labels: [combUsibras, combOutros],
+                    datasets: [{
+                        data: [precoEquivalenteUsibras, precoEquivalenteOutros],
+                        borderWidth: 2,
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(75, 192, 192, 1)',
+                        ],
+                        backgroundColor: [                                
+                            'rgba(255, 99, 132, 0.8)',                             
+                            'rgba(75, 192, 192, 0.8)',
+                        ],
+                    }],
                 },
+                options: {
+                    title: {
+                        display: true,
+                        fontSize: 16,
+                        text: "Equivalência em reais (R$) para obter o mesmo rendimento"
+                    },
+                    legend: {
+                        display: false,
+                    },
+
+                    scales: {
+                        xAxes: [{
+                            beginAtZero: true,
+                            ticks: {
+                            min: 0,
+                        }
+                            
+                        }],
+                        yAxes: [{
+
+                            
+                        }]
+                    }
+                }   
 
             });
 
@@ -469,7 +524,7 @@
                         borderColor: [
                             'rgba(255, 99, 132, 1)',
                             'rgba(75, 192, 192, 1)',
-                        ],   
+                        ],
                         backgroundColor: [                                
                             'rgba(255, 99, 132, 0.8)',                             
                             'rgba(75, 192, 192, 0.8)',
@@ -545,8 +600,13 @@
 
             var chartGraphLine = new Chart(ctx3, {
                 type: 'line',
+                
                 data: {
                     labels: C,
+                    borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(75, 192, 192, 1)',
+                        ],
                     datasets: dataSetGraficoLinha,
                 },
                 options: {
@@ -554,6 +614,11 @@
                         display: true,
                         fontSize: 16,
                         text: D
+                    },
+                    legend: {
+                        display: true,
+                        position: 'bottom',
+                        fullWidth: true,     
                     },
                 }
 
