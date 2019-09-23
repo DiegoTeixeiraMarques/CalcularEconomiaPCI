@@ -8,9 +8,9 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
             integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
-    <body>
+    <body style="background-color: black;">
         <!---------------------  INICIO CONTAINER     ------------------------>
-        <div class="container-fluid" style="padding-left: 50px; padding-right: 50px; padding-top: 30px; background-color: rgba(0, 0, 0, 0.952);">
+        <div class="container-fluid" style="padding-left: 30px; padding-right: 30px; padding-top: 5px;">
         <!---------------------    1ª LINHA   ------------------------>
             <div class="row">
 
@@ -20,313 +20,236 @@
 
             </div>
 
-            </br>
+            <br/>
 
             <div class="row">
-
-                <div class="col-sm-3" style="background-color:  rgb(255, 255, 255); border-radius: 10px; margin: 5px; margin-left: 30px">
-                    <div class="row" style="margin: 20px">
-                        
-                        <h5>COMBUSTÍVEIS USIBRAS</h5>
-
-                    </div>
-
-                    <div class="row" style="margin: 20px">
-                        
-                        <select id="combUsibras" class="form-control">
-                            <option value="0" selected disabled hidden>Escolha uma opção</option>
-                            <option value="4700">PELLET USIBRAS</option>
-                            <option value="4900">LCC USIBRAS</option>
-                            <option value="4700">CASCA CAJU USIBRAS</option>
-                        </select>
-
-                    </div>
-
-                        
-                    <div class="row" style="margin: 20px">
-                        <h5>PREÇO POR KG</h5>
-                    </div>
-
-                    <div class="row" style="margin: 20px">
-                        <input id="precoUsibras" type="number" value="" class="form-control" placeholder="Informe o preço"/>
-                    </div>
-
-                    <div class="row" style="margin: 20px">
-                        <h5>PODER CALORÍFICO</h5>
-                    </div>
-
-                    <div class="row" style="margin: 20px">
-                        <h3><span id="pciUsibras" class="badge badge-secondary"/>...</h3>
-                    </div>
-
-                    <div class="row" style="margin: 20px">
-                        <h5>PREÇO UNITÁRIO</h5>
-                    </div>
-
-                    <div class="row" style="margin: 20px">
-                        <h3><span id="precoUnitUsibras" class="badge badge-secondary"/>...</h3>
-                    </div>
-
+  
+                <div class="col-sm-2">
+                    <h6 style="color: white">Combustível Usibras</h6>
+                    <select id="combUsibras" class="form-control">
+                        <option value="0" selected disabled hidden>Escolha uma opção</option>
+                        <option value="4700">PELLET USIBRAS</option>
+                        <option value="4900">LCC USIBRAS</option>
+                        <option value="4700">CASCA CAJU USIBRAS</option>
+                    </select>
                 </div>
 
-                
-                <div class="col-sm-3" style="background-color: rgb(255, 255, 255); border-radius: 10px; margin: 5px; margin-left: 30px">
-                    <div class="row" style="margin: 20px">
-                        
-                        <h5>OUTROS COMBUSTÍVEIS</h5>
-
-                    </div>
-
-                    <div class="row" style="margin: 20px">
-                        
-                        <select id="combOutros" class="form-control">
-                            <option value="0" selected disabled hidden>Escolha uma opção</option>
-                            <option value="6300">APARAS VINILO</option>
-
-                            <option value="3200">BAGAÇO DE CANA (20% ÁGUA)</option>
-                            <option value="1800">BAGAÇO DE CANA (50% ÁGUA)</option>
-                            <option value="3700">BAMBÚ (10% ÁGUA)</option>
-                            <option value="1570">BORRA DE CAFÉ</option>
-
-                            <option value="7000">CARVÃO DE BABAÚ</option>
-                            <option value="6200">CARVÃO MINERAL - CAMBUI/PR</option>
-                            <option value="3100">CARVÃO MINERAL - CHARQUEADAS/RS</option>
-                            <option value="4200">CARVÃO MINERAL - MINA DO LEÃO/RS</option>
-                            <option value="4500">CARVÃO MINERAL - TUBARÃO/SC</option>
-                            <option value="7500">CARVÃO VEGETAL</option>
-                            <option value="2200">CASCA DE ÁRVORE</option>
-                            <option value="3000">CASCA DE ALGODÃO</option>
-                            <option value="4800">CASCA DE AMÊNDOA DENDÊ</option>
-                            <option value="3300">CASCA DE ARROZ (20% ÁGUA)</option>
-                            <option value="4000">CASCA DE BABAÇÚ</option>
-                            <option value="3900">CASCA DE CACAU (8% ÁGUA)</option>
-                            <option value="3800">CASCA DE CAFÉ</option>
-                            <option value="4000">CASCA DE CÔCO</option>
-                            <option value="3750">CASCA DE EUCALIPTO</option>
-                            <option value="800">CASCA DE TANINO ÚMIDO (68% ÁGUA)</option>
-                            <option value="3300">CASCA DE SOJA</option>
-
-                            <option value="9800">OLEO COMBUSTIVEL 1A</option>
-                            <option value="9800">OLEO COMBUSTIVEL 1B</option>
-                            <option value="9000">OLEO COMBUSTIVEL 2A</option>
-                            <option value="9000">OLEO COMBUSTIVEL 2B</option>
-                            <option value="3000">OLEO COMBUSTIVEL 3A</option>
-                            <option value="9000">OLEO COMBUSTIVEL 3B</option>
-
-                        </select>
-
-                    </div>
-                        
-                    <div class="row" style="margin: 20px">
-                        <h5>PREÇO POR KG</h5>
-                    </div>
-
-                    <div class="row" style="margin: 20px">
-                        <input id="precoOutros" type="number" value="" class="form-control" placeholder="Informe o preço"/>
-                    </div>
-
-                    <div class="row" style="margin: 20px">
-                        <h5>PODER CALORÍFICO</h5>
-                    </div>
-
-                    <div class="row" style="margin: 20px">
-                        <h3><span id="pciOutros" class="badge badge-secondary"/>...</h3>
-                    </div>
-
-                    <div class="row" style="margin: 20px">
-                        <h5>PREÇO UNITÁRIO</h5>
-                    </div>
-
-                    <div class="row" style="margin: 20px">
-                        <h3><span id="precoUnitOutros" class="badge badge-secondary"/>...</h3>
-                    </div>
-
-                </div>
-                
-                <div class="col-sm-5" style="background-color: rgb(255, 255, 400); border-radius: 10px; margin: 5px; margin-left: 30px">
-
-            
-                    <div class="row" style="margin: 20px">
-                        
-                        <h5>INFORME O CONSUMO PLANEJADO</h5>
-
-                    </div>
-
-                    
-                    <div class="row" style="margin: 20px">
-                        <div class="col-sm-6">
-                            <input id="consumoPlanejado" type="number" value="" class="form-control" placeholder="0,00"/>
-                        </div>
-                        
-                        <div class="col-sm-6">
-                            <div class="radio">
-                                <input type="radio" name="radio" id="radio" value="Consumo Diário" checked>
-                                <label for="radio">
-                                    Consumo Diário
-                                </label>
-                            </div>
-                            <div class="radio">
-                                <input type="radio" name="radio" id="radio" value="Consumo Mensal">
-                                <label for="radio">
-                                    Consumo Mensal
-                                </label>
-                            </div>
-                        </div>
-
-                    </div> 
-
-                    <div class="row" style="margin: 20px">
-                        
-                        <h5>INFORME O INVESTIMENTO NECESSÁRIO</h5>
-
-                    </div>
-
-                    <div class="row" style="margin: 20px">
-                        
-                        <div class="col-sm-12">
-                            <input id="investimentoNecessario" type="number" value="" class="form-control" placeholder="0,00"/>
-                        </div>
-                    </div>
-                    
+                <div class="col-sm-2">
+                    <h6 style="color: white">Preço Kg (Usibras)</h6>
+                    <input id="precoUsibras" type="number" value="" class="form-control" placeholder="Informe o preço"/>
                 </div>
 
+                <div class="col-sm-2">
+                    <h6 style="color: white">Outros combustíveis</h6>
+                    <select id="combOutros" class="form-control">
+                        <option value="0" selected disabled hidden>Escolha uma opção</option>
+                        <option value="6300">APARAS VINILO</option>
+                        <option value="3200">BAGAÇO DE CANA (20% ÁGUA)</option>
+                        <option value="1800">BAGAÇO DE CANA (50% ÁGUA)</option>
+                        <option value="3700">BAMBÚ (10% ÁGUA)</option>
+                        <option value="1570">BORRA DE CAFÉ</option>
+                        <option value="7000">CARVÃO DE BABAÚ</option>
+                        <option value="6200">CARVÃO MINERAL - CAMBUI/PR</option>
+                        <option value="3100">CARVÃO MINERAL - CHARQUEADAS/RS</option>
+                        <option value="4200">CARVÃO MINERAL - MINA DO LEÃO/RS</option>
+                        <option value="4500">CARVÃO MINERAL - TUBARÃO/SC</option>
+                        <option value="7500">CARVÃO VEGETAL</option>
+                        <option value="2200">CASCA DE ÁRVORE</option>
+                        <option value="3000">CASCA DE ALGODÃO</option>
+                        <option value="4800">CASCA DE AMÊNDOA DENDÊ</option>
+                        <option value="3300">CASCA DE ARROZ (20% ÁGUA)</option>
+                        <option value="4000">CASCA DE BABAÇÚ</option>
+                        <option value="3900">CASCA DE CACAU (8% ÁGUA)</option>
+                        <option value="3800">CASCA DE CAFÉ</option>
+                        <option value="4000">CASCA DE CÔCO</option>
+                        <option value="3750">CASCA DE EUCALIPTO</option>
+                        <option value="800">CASCA DE TANINO ÚMIDO (68% ÁGUA)</option>
+                        <option value="3300">CASCA DE SOJA</option>
+                        <option value="9800">OLEO COMBUSTIVEL 1A</option>
+                        <option value="9800">OLEO COMBUSTIVEL 1B</option>
+                        <option value="9000">OLEO COMBUSTIVEL 2A</option>
+                        <option value="9000">OLEO COMBUSTIVEL 2B</option>
+                        <option value="3000">OLEO COMBUSTIVEL 3A</option>
+                        <option value="9000">OLEO COMBUSTIVEL 3B</option>
+                    </select>
+                </div>
+
+                <div class="col-sm-2">
+                    <h6 style="color: white">Preço Kg (Outros)</h6>
+                    <input id="precoOutros" type="number" value="" class="form-control" placeholder="Informe o preço"/>
+                </div>
+
+                <div class="col-sm-2">
+                    <h6 style="color: white">Consumo em Kg</h6>
+                    <input id="consumoPlanejado" type="number" value="" class="form-control" placeholder="0,00"/>
+                </div>
+
+                <div class="col-sm-1">
+                    <div class="radio">
+                        <input type="radio" name="radio" id="radio" value="dia" checked>
+                        <label for="radio" style="color: white">
+                            Diário
+                        </label>
+                    </div>
+                    <div class="radio" style="color: white">
+                        <input type="radio" name="radio" id="radio" value="mes">
+                        <label for="radio">
+                            Mensal
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-sm-1">
+                    <h6 style="color: white">Investimento</h6>
+                    <input id="investimentoNecessario" type="number" value="" class="form-control" placeholder="0,00"/>
+                </div>
+                        
             </div>
 
-        </div> 
-        
-        
-        <div class="container-fluid" style="padding-left: 50px; padding-right: 50px; padding-top: 30px; background-color: rgba(0, 0, 0, 0.952);">
-              
-            <div class="row">
+            <br/>
 
-                <div class="col-12" style="border-radius: 10px; background-color: green;">
-                    <h4 align="center" style="padding: 5px; color:white">ANÁLISE FINANCEIRA</h4> 
+            <div class="row">
+           
+                <div class="col-sm-6">
+                    <div class="col-sm-12" style="background-color: rgb(255, 255, 255); border-radius: 10px">
+                        <div class="row" style="margin: 20px">            
+                            <div class="col-sm-12">
+                                <div class="row" style="margin: 20px">
+                                    <h4>Análise comparativa entre os dois combustíveis</h4>                     
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col"></th>
+                                                <th scope="col"><h6 id="combustivelUsibras"/>...</h6></th>
+                                                <th scope="col"><h6 id="combustivelOutros"/>...</h6></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Poder Calorífico</th>
+                                                <td><h4><span class="badge badge-secondary" id="pciUsibras"/>...</h4></td>
+                                                <td><h4><span class="badge badge-secondary" id="pciOutros"/>...</h4></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Preço Unitário (PCI)</th>
+                                                <td><h4><span class="badge badge-secondary" id="precoUnitUsibras"/>...</h4></td>
+                                                <td><h4><span class="badge badge-secondary" id="precoUnitOutros"/>...</h4></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Equivalência em KG</th>
+                                                <td><h4><span class="badge badge-secondary" id="pesoEquivalenteUsibras"/>...</h4></td>
+                                                <td><h4><span class="badge badge-secondary" id="pesoEquivalenteOutros"/>...</h4></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Equivalência em custo</th>
+                                                <td><h4><span class="badge badge-secondary" id="precoEquivalenteUsibras"/>...</h4></td>
+                                                <td><h4><span class="badge badge-secondary" id="precoEquivalenteOutros"/>...</h4></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>                                 
+                            </div>        
+                        </div>                           
+                    </div>      
+                </div>
+         
+          
+                <div class="col-sm-6">
+                    <div class="col-sm-12" style="background-color: rgb(255, 255, 255); border-radius: 10px">
+                        <div class="row" style="margin: 20px">            
+                            <div class="col-sm-12">
+                                <div class="row" style="margin: 20px">
+                                    <h4>Feedbacks sobre o consumo e investimento</h4>
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col"></th>
+                                                <th scope="col">...</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Melhor Opção</th>
+                                                <td><h4><span class="badge badge-success" id="melhorOpcao"/>...</h4></td>
+                                                
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Percentual de Economia</th>
+                                                <td><h4><span class="badge badge-success" id="percentualEconomia"/>...</h4></td>
+                                                
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Valor Total de Economia</th>
+                                                <td><h4><span class="badge badge-success" id="economiaTotal"/>...</h4></td>
+                                                
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">PayBack</th>
+                                                <td><h4><span class="badge badge-success" id="retornoInvestimento"/>...</h4></td>
+                                                
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>                                 
+                            </div>        
+                        </div>                           
+                    </div>      
                 </div>
 
-            </div>
+                <div class="col-sm-6">
+                    <div class="col-sm-12" style="background-color: rgb(255, 255, 255); border-radius: 10px">
+                        <div class="row" style="margin: 20px">            
+                            <div class="col-sm-12">
+                                <div class="row" style="margin: 20px" id="graph3">                        
+                                    <canvas class="line-chart"></canvas>         
+                                </div>                                 
+                            </div>        
+                        </div>                           
+                    </div>      
+                </div>
 
-            </br>
-
-
-            <div class="row">
+                <div class="col-sm-6">
+                    <div class="col-sm-12" style="background-color: rgb(255, 255, 255); border-radius: 10px">
+                        <div class="row" style="margin: 20px">            
+                            <div class="col-sm-12">
+                                <div class="row" style="margin: 20px" id="graph2">                        
+                                    <canvas class="doughnut-chart"></canvas>              
+                                </div>                                 
+                            </div>        
+                        </div>                           
+                    </div>      
+                </div>
 
                 <div class="col-sm-6">
                     <div class="col-sm-12" style="background-color: rgb(255, 255, 255); border-radius: 10px">
                         <div class="row" style="margin: 20px">            
                             <div class="col-sm-12">
                                 <div class="row" style="margin: 20px" id="graph1">                        
-                                    <canvas class="bar-chart"></canvas>                
+                                    <canvas class="bar-chart"></canvas>              
                                 </div>                                 
                             </div>        
                         </div>                           
                     </div>      
                 </div>
-            
-                <div class="col-sm-6">
-                    <div class="col-sm-12" style="background-color: rgb(255, 255, 255); border-radius: 10px;">
-                        <div class="row" style="margin: 20px;">    
-                            <div class="col-sm-12">
-                                <div class="row" style="margin: 20px" id="graph2">                        
-                                    <canvas class="doughnut-chart"></canvas>                
-                                </div>                                 
-                            </div>
-                        </div>                       
-                    </div>
-                </div>
-
-                <div class="col-sm-6">
-                    <div class="col-sm-12" style="background-color: rgb(255, 255, 255); border-radius: 10px;">
-                        <div class="row" style="margin: 20px;">    
-                            <div class="col-sm-12">
-                                <div class="row" style="margin: 20px" id="graph3">                        
-                                    <canvas class="line-chart"></canvas>                
-                                </div>                                 
-                            </div>
-                        </div>                       
-                    </div>
-                </div>
-
-
-            </div>
-
-            <div class="row">
 
                 <div class="col-sm-6">
                     <div class="col-sm-12" style="background-color: rgb(255, 255, 255); border-radius: 10px">
-                        <div class="row" style="margin: 20px;">
-                            <div class="col-sm-6">
-                                
-                                <div class="row" style="margin: 20px"></div>    
-                                                    
-                                <h5 align="center">OPÇÃO MAIS ECONÔMICA</h5>                
-                                 
-                                <div class="row" style="margin: 20px"></div>                              
-                                
-                                <h3 align="center"><span id="melhorOpcao" class="badge badge-success"/>...</h3>  
-                                
-                                <div class="row" style="margin: 20px"></div>
-                                                                      
-                            </div>
-                            
-                            <div class="col-sm-6">  
-                                
-                                <div class="row" style="margin: 20px"></div>
-                                                   
-                                <h5 align="center">PERCENTUAL DE ECONOMIA</h5>                    
-                                      
-                                <div class="row" style="margin: 20px"></div>
-
-                                <h3 align="center"><span id="percentualEconomia" class="badge badge-success"/>...</h3> 
-                                
-                                <div class="row" style="margin: 20px"></div>
-                                                                       
-                            </div>
-                        </div>
-                        
-                        <div class="row" style="margin: 20px;">
-
-                            <div class="col-sm-6 border">    
-                                
-                                    <h5 align="center" >EQUIVALÊNCIA EM PESO</h5>
-
-                                    <div class="row" style="margin: 20px">                            
-                                                                                    
-                                    </div>
-
-                                    <h3 align="center"><span id="" class="badge badge-success"/>1 kg</h3>
-                                    <h3 align="center"><span id="pesoEquivalenteOutros" class="badge badge-success"/>...</h3>
-
-                                    <div class="row" style="margin: 20px"></div>
-                                            
-                            </div>
-
-                            <div class="col-sm-6 border">    
-                                
-                                    <h5 align="center" >EQUIVALÊNCIA EM CUSTO</h5>
-
-                                    <div class="row" style="margin: 20px">                            
-                                                                                    
-                                    </div>
-
-                                    <h3 align="center"><span id="percentualEconomia" class="badge badge-success"/>...</h3>
-
-                                    <div class="row" style="margin: 20px"></div>
-                                            
-                            </div>
-                        </div>   
-                    </div>         
-                </div>
-
-                <div class="col-sm-6">
-                    <div class="col-sm-12" style="background-color: rgb(255, 255, 255); border-radius: 10px">
-                        <div class="row" style="margin: 20px">                
-                            <div class="col-sm-6">
-                                                             
+                        <div class="row" style="margin: 20px">            
+                            <div class="col-sm-12">
+                                <div class="row" style="margin: 20px" id="graph1">                        
+                                    <canvas class="bar-chart"></canvas>              
+                                </div>                                 
                             </div>        
-                        </div>   
-                    </div>             
-                </div>
+                        </div>                           
+                    </div>      
+                    </div>
             </div>
+
+            
+    
+        
+
+
 
         </div>
 
@@ -342,22 +265,27 @@
         $("#precoOutros").change(function(){           calc2();        });
         $("#consumoPlanejado").change(function(){      calcPercentual();        });
         $("#investimentoNecessario").change(function(){      calcPercentual();        });
+        $("#radio").change(function(){      calcPercentual();        });
 
         function calc1(){
+            var combUsibras = $("#combUsibras :selected").text();
             var pciUsibras = $("#combUsibras").val();
             var precoUsibras = $("#precoUsibras").val();
             var precoUnitUsibras = (precoUsibras / pciUsibras).toFixed(5);
             $("#pciUsibras").html(pciUsibras + " Kcal/Kg");
             $("#precoUnitUsibras").html("R$ " + precoUnitUsibras);
+            $("#combustivelUsibras").html(combUsibras);
             calcPercentual();
         }
 
         function calc2(){
+            var combOutros = $("#combOutros :selected").text();
             var pciOutros = $("#combOutros").val();
             var precoOutros = $("#precoOutros").val();
             var precoUnitOutros = (precoOutros / pciOutros).toFixed(5);
             $("#pciOutros").html(pciOutros + " Kcal/kg");
             $("#precoUnitOutros").html("R$ " + precoUnitOutros);
+            $("#combustivelOutros").html(combOutros);
             calcPercentual();
         }
 
@@ -381,6 +309,8 @@
             var precoTotalEquivalenteOutros = 0;
             var economiaTotal = 0;
             var tempoRetornoInvestimento = 0;
+            var precoEquivalenteUsibras = 0;
+            var precoEquivalenteOutros = 0;
 
             var consumoPlanejado = $("#consumoPlanejado").val();
             var investimentoNecessario = $("#investimentoNecessario").val();
@@ -388,7 +318,7 @@
 
             console.log(periodicidadeConsumo);
 
-            if(combUsibras != "" && combOutros != "" && precoUsibras != "" && precoOutros != ""){
+            if(combUsibras != "" && combOutros != "" && precoUsibras != "" && precoOutros != "" && consumoPlanejado != "" && investimentoNecessario != ""){
                 // Calcula o percentual entre o menor e o maior custo por PCI
                 if(precoUnitUsibras < precoUnitOutros)
                     percentual = (((precoUnitUsibras / precoUnitOutros) - 1) * 100) * -1;
@@ -411,14 +341,22 @@
                 // Calcula equivalência por peso
                 if((pciUsibras - pciOutros) < 0){
                     pesoEquivalenteUsibras = ((pciOutros - pciUsibras) / pciUsibras) + 1;
-                    pesoEquivalenteOutros = 1;
+                    pesoEquivalenteOutros = 1.00;
                 } else {
                     pesoEquivalenteOutros = ((pciUsibras - pciOutros) / pciUsibras) + 1;
-                    pesoEquivalenteUsibras = 1;
+                    pesoEquivalenteUsibras = 1.00;
                 }
 
-                console.log("Peso equivalente Usibras: " + pesoEquivalenteUsibras.toFixed(2));
-                console.log("Peso equivalente Outros: " + pesoEquivalenteOutros.toFixed(2));
+                precoEquivalenteUsibras = pesoEquivalenteUsibras * precoUsibras;
+                precoEquivalenteOutros = pesoEquivalenteOutros * precoOutros;
+                $("#pesoEquivalenteUsibras").html(pesoEquivalenteUsibras.toFixed(2) + " kg");
+                $("#pesoEquivalenteOutros").html(pesoEquivalenteOutros.toFixed(2) + " kg");
+
+                $("#precoEquivalenteUsibras").html("R$ " + precoEquivalenteUsibras.toFixed(2));
+                $("#precoEquivalenteOutros").html("R$ " + precoEquivalenteOutros.toFixed(2));
+
+                //console.log("Peso equivalente Usibras: " + pesoEquivalenteUsibras.toFixed(2));
+                //console.log("Peso equivalente Outros: " + pesoEquivalenteOutros.toFixed(2));
         
                 proporcaoTotalKgUsibras = consumoPlanejado * pesoEquivalenteUsibras;
                 proporcaoTotalKgOutros = consumoPlanejado * pesoEquivalenteOutros;
@@ -435,6 +373,8 @@
                     economiaTotal = 0;
                 }
 
+                $("#economiaTotal").html("R$ " + economiaTotal.toFixed(2) + " por " + periodicidadeConsumo);
+
                 console.log("Preco total Usibras: " + precoTotalEquivalenteUsibras.toFixed(2));
                 console.log("Preco total Outros: " + precoTotalEquivalenteOutros.toFixed(2));
                 console.log("Economia total: " + economiaTotal.toFixed(2));
@@ -442,8 +382,10 @@
                 console.log(investimentoNecessario);
                 if(economiaTotal == 0 && investimentoNecessario > 0 && consumoPlanejado > 0){
                     tempoRetornoInvestimento = "Não retorna";
-                } else
+                    $("#retornoInvestimento").html(tempoRetornoInvestimento);
+                } else{
                     tempoRetornoInvestimento = investimentoNecessario / economiaTotal;
+                    $("#retornoInvestimento").html(tempoRetornoInvestimento.toFixed(2) + " " + periodicidadeConsumo);}
 
                 console.log("Retorno do investimento em:  " + tempoRetornoInvestimento);
 
@@ -474,7 +416,7 @@
             var dataSetGraficoLinha = {};
 
             document.getElementById("graph1").innerHTML = '&nbsp;';
-            document.getElementById("graph1").innerHTML = '<canvas class="bar-chart" width= "3000" height="1000"></canvas>';
+            document.getElementById("graph1").innerHTML = '<canvas class="bar-chart"></canvas>';
 
             document.getElementById("graph2").innerHTML = '&nbsp;';
             document.getElementById("graph2").innerHTML = '<canvas class="doughnut-chart"></canvas>';
@@ -549,7 +491,7 @@
             });
 
             // Verifica a periodicidade e produz o dataset
-            if (periodicidadeConsumo == "Consumo Diário"){
+            if (periodicidadeConsumo == "dia"){
 
                 A = [];
                 B = [];
@@ -580,7 +522,7 @@
                 C = [];
                 D = "Custo mensal durante três anos"
 
-                for (var i = 0; i < 36; i++){
+                for (var i = 0; i < 37; i++){
                     A[i] = i * precoTotalEquivalenteUsibras.toFixed(2);
                     B[i] = i * precoTotalEquivalenteOutros.toFixed(2);
                     C[i] = i;
