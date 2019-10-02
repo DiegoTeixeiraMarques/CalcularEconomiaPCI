@@ -10,12 +10,15 @@
     </head>
     <body style="background-color: black;">
         <!---------------------  INICIO CONTAINER     ------------------------>
-        <div class="container-fluid" style="padding-left: 30px; padding-right: 30px; padding-top: 5px;">
+        <div class="container-fluid" style="padding-left: 30px; padding-right: 30px; padding-top: 5px;" id="conteudo">
         <!---------------------    1ª LINHA   ------------------------>
             <div class="row">
 
-                <div class="col-12" style="border-radius: 10px; background-color: green">
-                    <h4 align="center" style="padding: 5px; color:white">COMPARAÇÃO DE COMBUSTÍVEIS PARA QUEIMA EM CALDEIRA</h4> 
+                <div class="col-12" style="border-radius: 10px; background-color: green; flex-direction: row; display: flex; justify-content: space-around">
+
+                    <h4 align="center" style="padding: 5px; color:white">COMPARAÇÃO DE COMBUSTÍVEIS PARA QUEIMA EM CALDEIRA</h4>
+                    <button class="btn btn-primary" id="btGerarPDF">gerar PDF</button>
+                        
                 </div>
 
             </div>
@@ -248,9 +251,20 @@
 
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js" integrity="sha256-qSIshlknROr4J8GMHRlW3fGKrPki733tLq+qeMCR05Q=" crossorigin="anonymous"></script>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
 
     <script>
+
+        var doc = new jsPDF();
+        var specialElementHandlers = {
+            '#editor': function (element, renderer) {
+                return true;
+            }
+        };
+
+        $('#btGerarPDF').click(function () {
+            window.print();          
+        })
  
         $("#combUsibras").change(function(){           calc1();        });
         $("#precoUsibras").change(function(){          calc1();        });
