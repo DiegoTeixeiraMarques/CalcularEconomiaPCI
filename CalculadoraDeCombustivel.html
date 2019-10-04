@@ -18,6 +18,7 @@
 
                     <h4 align="center" style="padding: 5px; color:white">COMPARAÇÃO DE COMBUSTÍVEIS PARA QUEIMA EM CALDEIRA</h4>
                     <button class="btn btn-primary" id="btGerarPDF">gerar PDF</button>
+                    <h4 id="data" style="color: white"></h4>
                         
                 </div>
 
@@ -248,7 +249,19 @@
                             </div>        
                         </div>                           
                     </div>      
-                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="col-sm-12" style="background-color: rgb(255, 255, 255); border-radius: 10px">
+                        <div class="row" style="margin: 20px">            
+                            <div class="col-sm-12">
+                                <div class="row" style="margin: 20px" id="graph5">                        
+                                    <canvas class="radar-chart"></canvas>              
+                                </div>                                 
+                            </div>        
+                        </div>                           
+                    </div>      
+                </div>
             </div>
         </div>
 
@@ -258,14 +271,14 @@
 
     <script>
 
-        var doc = new jsPDF();
-        var specialElementHandlers = {
-            '#editor': function (element, renderer) {
-                return true;
-            }
-        };
-
         $('#btGerarPDF').click(function () {
+            document.getElementById("btGerarPDF").innerHTML = '&nbsp;';
+            var data = new Date();
+            var dia  = data.getDate();           // 1-31
+            var mes  = data.getMonth();          // 0-11 (zero=janeiro)
+            var ano4 = data.getFullYear();       // 4 dígitos
+            var str_data = dia + '/' + (mes+1) + '/' + ano4;
+            $("#data").html(str_data);
             window.print();          
         })
  
@@ -408,6 +421,7 @@
         var ctx2 = document.getElementsByClassName("doughnut-chart");
         var ctx3 = document.getElementsByClassName("line-chart");
         var ctx4 = document.getElementsByClassName("line-chart-2");
+        var ctx5 = document.getElementsByClassName("radar-chart");
 
         function atualizarGraficos(economiaTotal, precoTotalEquivalenteUsibras, precoTotalEquivalenteOutros, pesoEquivalenteUsibras, pesoEquivalenteOutros, precoEquivalenteUsibras, precoEquivalenteOutros){
             var combUsibras = $("#combUsibras :selected").text();
@@ -441,6 +455,9 @@
 
             document.getElementById("graph4").innerHTML = '&nbsp;';
             document.getElementById("graph4").innerHTML = '<canvas class="line-chart-2"></canvas>';
+
+            document.getElementById("graph5").innerHTML = '&nbsp;';
+            document.getElementById("graph5").innerHTML = '<canvas class="radar-chart"></canvas>';
 
             var chartGraphBar = new Chart(ctx1, {
                 type: 'bar',
@@ -639,6 +656,43 @@
                     },
                 }
 
+            });
+
+            var myRadarChart = new Chart(ctx5, {
+                type: 'radar',
+                labels: ["CO", "NOx", "CO2", "SO2", "OUTROS"],
+                datasets: [
+                            {
+                    label: "1950",
+                    fill: true,
+                    backgroundColor: "rgba(179,181,198,0.2)",
+                    borderColor: "rgba(179,181,198,1)",
+                    pointBorderColor: "#fff",
+                    pointBackgroundColor: "rgba(179,181,198,1)",
+                    data: [8.77,55.61,21.69,6.62,6.82]
+                    }, {
+                    label: "2050",
+                    fill: true,
+                    backgroundColor: "rgba(255,99,132,0.2)",
+                    borderColor: "rgba(255,99,132,1)",
+                    pointBorderColor: "#fff",
+                    pointBackgroundColor: "rgba(255,99,132,1)",
+                    pointBorderColor: "#fff",
+                    data: [25.48,54.16,7.61,8.06,4.45]
+                    }
+                ],
+                options: {
+                    title: {
+                        display: true,
+                        fontSize: 16,
+                        text: "Quantidade de Poder Calorífico por KG"
+                    },
+                    legend: {
+                        display: true,
+                        position: 'bottom',
+                        fullWidth: true,     
+                    }
+                }
             });
         }
     </script>
