@@ -16,8 +16,8 @@
 
                 <div class="col-12" style="border-radius: 10px; background-color: green; flex-direction: row; display: flex; justify-content: space-around">
 
-                    <h4 align="center" style="padding: 5px; color:white">COMPARAÇÃO DE COMBUSTÍVEIS PARA QUEIMA EM CALDEIRA</h4>
-                    <button class="btn btn-primary" id="btGerarPDF">gerar PDF</button>
+                    <h4 align="center" style="padding: 5px;">COMPARAÇÃO DE COMBUSTÍVEIS PARA QUEIMA EM CALDEIRA</h4>
+                    <button class="btn btn-success" id="btGerarPDF">PDF</button>
                     <h4 id="data" style="color: white"></h4>
                         
                 </div>
@@ -250,7 +250,7 @@
                         </div>                           
                     </div>      
                 </div>
-
+<!--
                 <div class="col-sm-6">
                     <div class="col-sm-12" style="background-color: rgb(255, 255, 255); border-radius: 10px">
                         <div class="row" style="margin: 20px">            
@@ -262,6 +262,7 @@
                         </div>                           
                     </div>      
                 </div>
+-->
             </div>
         </div>
 
@@ -272,13 +273,13 @@
     <script>
 
         $('#btGerarPDF').click(function () {
-            document.getElementById("btGerarPDF").innerHTML = '&nbsp;';
-            var data = new Date();
-            var dia  = data.getDate();           // 1-31
-            var mes  = data.getMonth();          // 0-11 (zero=janeiro)
-            var ano4 = data.getFullYear();       // 4 dígitos
-            var str_data = dia + '/' + (mes+1) + '/' + ano4;
-            $("#data").html(str_data);
+            //document.getElementById("btGerarPDF").innerHTML = '&nbsp;';
+            //var data = new Date();
+            //var dia  = data.getDate();           // 1-31
+            //var mes  = data.getMonth();          // 0-11 (zero=janeiro)
+            //var ano4 = data.getFullYear();       // 4 dígitos
+            //var str_data = dia + '/' + (mes+1) + '/' + ano4;
+            //$("#data").html(str_data);
             window.print();          
         })
  
@@ -421,7 +422,7 @@
         var ctx2 = document.getElementsByClassName("doughnut-chart");
         var ctx3 = document.getElementsByClassName("line-chart");
         var ctx4 = document.getElementsByClassName("line-chart-2");
-        var ctx5 = document.getElementsByClassName("radar-chart");
+        //var ctx5 = document.getElementsByClassName("radar-chart");
 
         function atualizarGraficos(economiaTotal, precoTotalEquivalenteUsibras, precoTotalEquivalenteOutros, pesoEquivalenteUsibras, pesoEquivalenteOutros, precoEquivalenteUsibras, precoEquivalenteOutros){
             var combUsibras = $("#combUsibras :selected").text();
@@ -456,8 +457,8 @@
             document.getElementById("graph4").innerHTML = '&nbsp;';
             document.getElementById("graph4").innerHTML = '<canvas class="line-chart-2"></canvas>';
 
-            document.getElementById("graph5").innerHTML = '&nbsp;';
-            document.getElementById("graph5").innerHTML = '<canvas class="radar-chart"></canvas>';
+            //document.getElementById("graph5").innerHTML = '&nbsp;';
+            //document.getElementById("graph5").innerHTML = '<canvas class="radar-chart"></canvas>';
 
             var chartGraphBar = new Chart(ctx1, {
                 type: 'bar',
@@ -657,7 +658,7 @@
                 }
 
             });
-
+/**
             var myRadarChart = new Chart(ctx5, {
                 type: 'radar',
                 labels: ["CO", "NOx", "CO2", "SO2", "OUTROS"],
@@ -693,8 +694,9 @@
                         fullWidth: true,     
                     }
                 }
-            });
+            });**/
         }
+        
     </script>
     </body>
 </html>
